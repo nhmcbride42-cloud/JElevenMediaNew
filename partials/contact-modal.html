@@ -1,0 +1,45 @@
+<div id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden class="fixed inset-0 z-[500] flex items-center justify-center overflow-y-auto bg-ink/55 p-6 backdrop-blur-[4px]">
+    <div class="relative flex w-full max-w-[560px] flex-col gap-4 rounded-[20px] bg-cocoa p-[clamp(1.8rem,4vw,3rem)]">
+        <button type="button" data-modal-close aria-label="Close" class="absolute right-[1.2rem] top-4 cursor-pointer border-none bg-transparent p-1 text-base leading-none text-paper/50 transition-colors duration-200 hover:text-paper focus-ring-light">&#10005;</button>
+
+        <h2 id="modal-title" class="font-playfair text-[clamp(1.6rem,3vw,2.2rem)] font-medium leading-[1.1] text-paper">Let&rsquo;s get started today.</h2>
+        <p class="-mt-1 font-cormorant text-[clamp(0.95rem,1.2vw,1.1rem)] italic leading-[1.5] text-paper/60">Tell us a little about what you&rsquo;re needing and we&rsquo;ll reach out.</p>
+
+        <form id="modal-form" data-contact-form class="flex flex-col gap-3" novalidate>
+            <input type="hidden" name="csrf_token" data-csrf>
+            <div class="hidden" aria-hidden="true">
+                <label for="modal-hp">Leave this field empty</label>
+                <input type="text" id="modal-hp" name="hp_field" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="grid grid-cols-1 gap-3 min-[481px]:grid-cols-2">
+                <div class="flex flex-col gap-[0.3rem]">
+                    <label for="modal-name" class="form-label">Name</label>
+                    <input id="modal-name" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Your name" aria-describedby="modal-name-error" class="form-input">
+                    <p id="modal-name-error" data-error="name" class="form-error hidden" role="alert"></p>
+                </div>
+                <div class="flex flex-col gap-[0.3rem]">
+                    <label for="modal-email" class="form-label">Email</label>
+                    <input id="modal-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="your@email.com" aria-describedby="modal-email-error" class="form-input">
+                    <p id="modal-email-error" data-error="email" class="form-error hidden" role="alert"></p>
+                </div>
+            </div>
+            <fieldset class="flex flex-col gap-[0.4rem]">
+                <legend class="form-label mb-[0.4rem]">What are you interested in?</legend>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-[0.4rem]">
+                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="website" class="size-[15px] shrink-0 cursor-pointer accent-clay">Website</label>
+                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="online-store" class="size-[15px] shrink-0 cursor-pointer accent-clay">Online Store</label>
+                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="care-plan" class="size-[15px] shrink-0 cursor-pointer accent-clay">Care Plan</label>
+                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="add-ons" class="size-[15px] shrink-0 cursor-pointer accent-clay">Add-Ons</label>
+                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="social-media" class="size-[15px] shrink-0 cursor-pointer accent-clay">Social Media</label>
+                </div>
+            </fieldset>
+            <div class="flex flex-col gap-[0.3rem]">
+                <label for="modal-message" class="form-label">What do you need?</label>
+                <textarea id="modal-message" name="message" required maxlength="2000" rows="4" placeholder="Tell us a little about your project..." aria-describedby="modal-message-error" class="form-input min-h-[110px] resize-none"></textarea>
+                <p id="modal-message-error" data-error="message" class="form-error hidden" role="alert"></p>
+            </div>
+            <p data-form-status class="form-status hidden" role="status" aria-live="polite"></p>
+            <button type="submit" class="form-submit self-end">Send message &rarr;</button>
+        </form>
+    </div>
+</div>

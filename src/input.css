@@ -1,0 +1,309 @@
+@import "tailwindcss";
+@source "../";
+
+/* Self-hosted Latin subsets (SIL Open Font License). Playfair Display and
+   Hanken Grotesk are variable fonts, so one file covers every weight. */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-latin-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/hanken-grotesk-latin.woff2') format('woff2');
+}
+
+/* Homepage reveal animations (js/home.js). `js:` styles apply only once the
+   script has run, so the page still shows everything without JavaScript;
+   `revealed:` styles apply once an item has scrolled into view. */
+@custom-variant js (:where(.js) &);
+@custom-variant revealed (&.is-revealed);
+
+@theme {
+  /* ── Colors ── */
+  --color-paper: #e7e4dd;
+  --color-ink: #1b1814;
+  --color-ink-soft: #544d44;
+  --color-ink-faint: #938b7e;
+  --color-clay: #9c6b4e;
+  --color-cocoa: #5d473d;
+  --color-line: rgba(27, 24, 20, 0.14);
+  --color-line-2: rgba(27, 24, 20, 0.28);
+
+  /* ── Fonts ── */
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-hanken: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+
+  /* ── Easing ── */
+  --ease-snap: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* ── Keyframes ── */
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  --nav-h: 80px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 60px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Chrome on Android */
+    color-scheme: light;
+    /* Keeps in-page targets (skip link, anchors) clear of the sticky nav. */
+    scroll-padding-top: var(--nav-h);
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-hanken);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Paper-grain noise overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  ::selection {
+    background: var(--color-clay);
+    color: var(--color-paper);
+  }
+
+  /* Full-screen snap sections are desktop only (homepage). */
+  @media (max-width: 768px) {
+    [data-snap-section] {
+      height: auto !important;
+      min-height: auto;
+      scroll-snap-align: none;
+      overflow: visible !important;
+    }
+  }
+
+  /* Visitors who prefer less motion skip the reveal animations. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ── Accessibility ── */
+
+@utility focus-ring {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay;
+}
+
+@utility focus-ring-light {
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper;
+}
+
+/* ── Nav / footer ── */
+
+@utility nav-link {
+  @apply cursor-pointer whitespace-nowrap border-none bg-transparent py-1.5 font-playfair text-base font-normal tracking-[0.16em] text-ink no-underline opacity-[0.72] transition-opacity duration-300 hover:opacity-100 focus-ring;
+}
+
+@utility dropdown-link {
+  @apply block px-5 py-2.5 font-playfair text-[0.9rem] tracking-[0.1em] text-ink no-underline opacity-[0.72] transition-opacity duration-200 hover:opacity-100 aria-[current=page]:font-bold aria-[current=page]:opacity-100 focus-ring;
+}
+
+@utility mobile-nav-link {
+  @apply block w-full border-t border-line px-7 py-5 text-left font-playfair text-[0.9rem] font-normal tracking-[0.14em] text-ink no-underline opacity-[0.72] focus-ring;
+}
+
+@utility mobile-subnav-link {
+  @apply block border-t border-line py-4 pl-[42px] pr-7 font-playfair text-[0.85rem] tracking-[0.12em] text-ink no-underline opacity-75 hover:opacity-100 aria-[current=page]:font-bold aria-[current=page]:opacity-100 focus-ring;
+}
+
+@utility menu-bar {
+  @apply block h-[1.5px] w-[25px] bg-ink transition-[transform,opacity] duration-[350ms] ease-in-out;
+}
+
+@utility footer-link {
+  @apply inline-block py-1 font-playfair text-[0.9rem] text-paper/70 no-underline transition-colors duration-200 hover:text-paper focus-ring-light;
+}
+
+/* ── Shared text ── */
+
+/* "Our Story", "Our Services"… on the homepage. Font and color are set on
+   each heading (they differ by section). */
+@utility section-title {
+  @apply text-[clamp(2rem,8vw,3rem)] font-normal leading-none tracking-[-0.01em] md:text-[clamp(2.4rem,4vw,4.5rem)];
+}
+
+/* Clay "Get started →" style links and buttons */
+@utility cta-link {
+  @apply cursor-pointer border-none bg-transparent p-0 font-playfair text-[clamp(0.95rem,1.4vw,1.2rem)] font-semibold tracking-[0.08em] text-clay no-underline transition-[letter-spacing] duration-200 hover:tracking-[0.14em] focus-ring;
+}
+
+/* ── Service pages ── */
+
+@utility page-hero {
+  @apply flex min-h-[28vh] items-center bg-cocoa;
+}
+
+@utility page-title {
+  @apply font-playfair text-[clamp(2.2rem,4vw,4rem)] font-medium leading-[1.05] tracking-[-0.01em] text-paper;
+}
+
+@utility page-motto {
+  @apply max-w-[60ch] font-cormorant text-[clamp(1.1rem,1.4vw,1.3rem)] italic leading-[1.4] tracking-[0.02em] text-paper/70;
+}
+
+@utility ticker-link {
+  @apply font-playfair text-[0.9rem] tracking-[0.1em] text-ink no-underline opacity-55 transition-opacity duration-150 hover:opacity-100 aria-[current=page]:font-bold aria-[current=page]:opacity-100 focus-ring;
+}
+
+@utility body-heading {
+  @apply font-cormorant text-[clamp(1.6rem,2.5vw,2.4rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink;
+}
+
+@utility body-copy {
+  @apply font-cormorant text-[clamp(1.15rem,1.6vw,1.45rem)] italic leading-[1.8] text-ink-soft;
+}
+
+@utility group-heading {
+  @apply font-playfair text-[clamp(1.5rem,2.2vw,2.2rem)] font-normal leading-[1.1] tracking-[-0.01em] text-cocoa;
+}
+
+@utility group-intro {
+  @apply mt-2 max-w-[65ch] font-cormorant text-[clamp(1.1rem,1.4vw,1.3rem)] italic leading-[1.6] text-ink-soft;
+}
+
+/* "Every website includes" box */
+@utility includes-box {
+  @apply flex flex-col gap-3 rounded-2xl border border-line-2 bg-white/60 px-[1.4rem] py-[1.2rem];
+}
+
+@utility includes-title {
+  @apply font-playfair text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-clay;
+}
+
+@utility package-grid {
+  @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+@utility package-card {
+  @apply flex flex-col gap-3 rounded-2xl border border-clay bg-white px-[1.4rem] py-[1.3rem];
+}
+
+@utility package-name {
+  @apply font-playfair text-[clamp(1.1rem,1.3vw,1.25rem)] font-semibold text-ink;
+}
+
+@utility package-price {
+  @apply font-playfair text-[clamp(1.6rem,2.2vw,2rem)] font-medium leading-none text-clay;
+}
+
+/* Small qualifier under a price ("or $500 / year", "Add-on to any website") */
+@utility package-price-note {
+  @apply mt-1 font-cormorant text-[1.05rem] italic text-ink-faint;
+}
+
+@utility package-tagline {
+  @apply font-cormorant text-[clamp(1.05rem,1.2vw,1.2rem)] italic leading-[1.45] text-ink-soft;
+}
+
+@utility check-list {
+  @apply flex list-none flex-col gap-[0.4rem] border-t border-line pt-3;
+}
+
+@utility check-item {
+  @apply flex items-start gap-2 font-cormorant text-[clamp(1rem,1.1vw,1.1rem)] leading-[1.4] text-ink;
+}
+
+@utility check-mark {
+  @apply mt-[0.2rem] shrink-0 text-[0.78rem] font-bold text-clay;
+}
+
+/* Notes under a group of packages (Shopify fees, care plan terms) */
+@utility fine-print {
+  @apply max-w-[75ch] font-cormorant text-[1.05rem] italic leading-[1.6] text-ink-soft;
+}
+
+@utility inline-link {
+  @apply text-clay underline decoration-clay/40 underline-offset-2 transition-colors hover:decoration-clay focus-ring;
+}
+
+/* ── Forms (on cocoa backgrounds) ── */
+
+@utility form-label {
+  @apply font-playfair text-[clamp(0.78rem,0.9vw,0.95rem)] font-semibold tracking-[0.02em] text-paper;
+}
+
+@utility form-input {
+  @apply w-full rounded-[10px] border border-paper/25 bg-paper/[0.12] px-[0.9rem] py-[0.6rem] font-playfair text-[clamp(0.88rem,1vw,1.05rem)] text-paper outline-none transition-[border-color] duration-200 placeholder:italic placeholder:text-paper/45 focus:border-paper/70 aria-[invalid=true]:border-[#f3b7a0];
+}
+
+@utility form-error {
+  @apply font-playfair text-[0.85rem] italic text-[#f3c9b8];
+}
+
+@utility form-status {
+  @apply font-playfair text-[0.95rem] italic text-paper;
+}
+
+@utility form-submit {
+  @apply cursor-pointer rounded-[50px] border-none bg-paper px-8 py-3 font-playfair text-[clamp(0.9rem,1.05vw,1.1rem)] font-semibold text-cocoa transition-[opacity,letter-spacing] duration-300 enabled:hover:tracking-[0.02em] enabled:hover:opacity-85 disabled:cursor-default disabled:opacity-50 focus-ring-light;
+}

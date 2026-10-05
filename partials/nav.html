@@ -1,0 +1,50 @@
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[10000] rounded bg-white px-4 py-2 font-playfair font-semibold text-ink">Skip to main content</a>
+<!-- Safe area bar (notch/status bar) -->
+<div class="fixed inset-x-0 top-0 z-[9999] h-[env(safe-area-inset-top)] bg-paper md:hidden"></div>
+<nav aria-label="Main navigation" class="border-b border-line-2 bg-paper pt-[env(safe-area-inset-top)] md:pt-0 md:backdrop-blur-[10px]">
+    <div class="mx-auto grid h-[var(--nav-h)] max-w-[1440px] grid-cols-[auto_auto] items-center justify-between px-6 lg:grid-cols-[auto_1fr_auto] lg:justify-normal lg:px-12">
+        <a href="/" class="flex items-center justify-self-start leading-none no-underline focus-ring">
+            <img src="/images/logo-480.webp" alt="J Eleven Media home" width="480" height="138" class="block h-[65px] w-auto max-[480px]:h-[52px]" fetchpriority="high">
+        </a>
+
+        <ul class="hidden list-none justify-center gap-[38px] self-stretch lg:flex">
+            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
+            <li class="group relative flex items-center" data-dropdown>
+                <button type="button" aria-expanded="false" aria-controls="services-menu" class="nav-link inline-flex items-center gap-1.5">
+                    Our Services <span aria-hidden="true" class="text-[0.6rem] transition-transform duration-200 group-[.is-open]:rotate-180">&#9662;</span>
+                </button>
+                <ul id="services-menu" class="absolute left-1/2 top-full z-[200] hidden min-w-[220px] -translate-x-1/2 list-none flex-col rounded-b-xl border border-t-0 border-line-2 bg-paper py-2 group-hover:flex group-[.is-open]:flex">
+                    <li><a href="/web-design" class="dropdown-link">Web Design</a></li>
+                    <li><a href="/online-stores" class="dropdown-link">Online Stores</a></li>
+                    <li><a href="/care-plans" class="dropdown-link">Care Plans</a></li>
+                    <li><a href="/add-ons" class="dropdown-link">Add-Ons</a></li>
+                    <li><a href="/social-media" class="dropdown-link">Social Media</a></li>
+                </ul>
+            </li>
+            <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
+            <li class="flex items-center"><a href="/#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+
+        <button id="menu-button" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="z-[120] flex cursor-pointer flex-col gap-[5.5px] justify-self-end border-none bg-transparent p-2 lg:hidden focus-ring">
+            <span class="menu-bar" id="bar1"></span>
+            <span class="menu-bar" id="bar2"></span>
+            <span class="menu-bar" id="bar3"></span>
+        </button>
+    </div>
+
+    <div id="mobile-menu" inert class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] md:top-[var(--nav-h)] lg:hidden">
+        <a href="/#story-reveal" class="mobile-nav-link border-t-0">Our Story</a>
+        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link flex cursor-pointer items-center justify-between">
+            Our Services <span aria-hidden="true" class="text-[0.6rem]">&#9662;</span>
+        </button>
+        <div id="mobile-services" class="hidden flex-col bg-ink/[0.04]">
+            <a href="/web-design" class="mobile-subnav-link">Web Design</a>
+            <a href="/online-stores" class="mobile-subnav-link">Online Stores</a>
+            <a href="/care-plans" class="mobile-subnav-link">Care Plans</a>
+            <a href="/add-ons" class="mobile-subnav-link">Add-Ons</a>
+            <a href="/social-media" class="mobile-subnav-link">Social Media</a>
+        </div>
+        <a href="/#work" class="mobile-nav-link">Our Work</a>
+        <a href="/#contact" class="mobile-nav-link">Contact Us</a>
+    </div>
+</nav>
