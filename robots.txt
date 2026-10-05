@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /src/
+
+Sitemap: https://www.jelevenmedia.com/sitemap.xml
