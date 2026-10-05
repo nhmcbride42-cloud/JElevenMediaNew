@@ -103,11 +103,6 @@
               "priceCurrency": "USD"
             },
             "priceCurrency": "USD"
-          },
-          {
-            "@type": "Offer",
-            "name": "Custom Web Apps",
-            "description": "When your website needs to do more than inform."
           }
         ]
       }
@@ -229,29 +224,30 @@
         <!-- Packages and pricing -->
         <div class="flex flex-col gap-14 border-t border-line-2 px-6 py-10 md:px-[clamp(1.5rem,10vw,12rem)] md:py-[clamp(2.5rem,6vh,4.5rem)]">
 
-            <section aria-labelledby="website-packages" class="flex flex-col gap-6">
-                <div>
+            <section aria-labelledby="website-packages" class="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
+                <div class="text-center">
                     <h2 id="website-packages" class="group-heading">Website Packages</h2>
-                    <p class="group-intro">Custom-built websites for East Tennessee businesses.</p>
+                    <p class="group-intro mx-auto">Custom-built websites for East Tennessee businesses.</p>
                 </div>
 
-                <div class="includes-box">
+                <div class="flex flex-col items-center gap-3">
                     <p class="includes-title">Every website includes</p>
-                    <ul class="grid list-none grid-cols-1 gap-x-6 gap-y-[0.4rem] sm:grid-cols-2">
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Custom design</li>
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>A mobile-friendly layout</li>
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Domain and DNS setup</li>
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>SSL security</li>
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>A working contact form</li>
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Basic search setup so Google can find you</li>
-                        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Unlimited revisions until you're happy</li>
+                    <ul class="flex max-w-[900px] list-none flex-wrap justify-center gap-2">
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>Custom design</li>
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>A mobile-friendly layout</li>
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>Domain and DNS setup</li>
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>SSL security</li>
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>A working contact form</li>
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>Basic search setup so Google can find you</li>
+                        <li class="include-chip"><span aria-hidden="true" class="check-mark mr-1.5">&#10003;</span>Unlimited revisions until you're happy</li>
                     </ul>
                 </div>
 
-                <div class="package-grid">
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Starter</h3>
+                <div class="package-grid sm:grid-cols-2 lg:grid-cols-4">
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Starter</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$500</p>
                         </div>
                         <p class="package-tagline">A clean, single-page website that tells people who you are and how to reach you.</p>
@@ -260,9 +256,10 @@
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>You provide the text and photos, and we design and build around them</li>
                         </ul>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Essentials</h3>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Essentials</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$1,000</p>
                         </div>
                         <p class="package-tagline">A polished website of up to 3 pages.</p>
@@ -270,9 +267,10 @@
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Great for a new business, a single service, or a simple online presence</li>
                         </ul>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Studio</h3>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Studio</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$2,000</p>
                         </div>
                         <p class="package-tagline">A complete business website of up to 10 pages.</p>
@@ -281,10 +279,11 @@
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Local business setup that helps Google understand where you are and what you do</li>
                         </ul>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Signature</h3>
-                            <p class="package-price"><span class="font-cormorant text-[1.1rem] italic text-ink-faint">Starting at</span> $3,500</p>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Signature</h3>
+                        <div>
+                            <p class="package-price-label">Starting at</p>
+                            <p class="package-price">$3,500</p>
                         </div>
                         <p class="package-tagline">A larger, fully custom website of 10 or more pages.</p>
                         <ul class="check-list">
@@ -292,20 +291,9 @@
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Built for businesses with more to say and more to show</li>
                         </ul>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Custom Web Apps</h3>
-                            <p class="package-price">Quoted per project</p>
-                        </div>
-                        <p class="package-tagline">When your website needs to do more than inform.</p>
-                        <ul class="check-list">
-                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Customer logins and portals</li>
-                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Booking systems, databases, and searchable or filterable listings</li>
-                        </ul>
-                    </article>
                 </div>
 
-                <ul class="flex list-none flex-col gap-1">
+                <ul class="flex list-none flex-col items-center gap-1 text-center">
                     <li class="fine-print">Need to sell online? Add <a href="/online-stores" class="inline-link">Simple Online Sales</a> to any website, or get a full Shopify store.</li>
                     <li class="fine-print">Need more pages, a Google Business Profile, or a connection to your booking calendar? See <a href="/add-ons" class="inline-link">Add-Ons</a>.</li>
                     <li class="fine-print">A <a href="/care-plans" class="inline-link">Care plan</a> is required for any website we host.</li>

@@ -188,21 +188,24 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 
 ## 7. Changing prices and packages
 
-Prices follow the **J Eleven Media Pricing Guide**. Each package is a card on its service page:
+Prices follow the **J Eleven Media Pricing Guide**. Each page shows **at most four packages**; larger offerings (e.g. custom web apps) are quoted in conversation, not listed. Each package is a card on its service page:
 
 ```html
-<article class="package-card">
-    <div class="flex flex-col gap-1">
-        <h3 class="package-name">Starter</h3>
-        <p class="package-price">$500</p>
-        <p class="package-price-note">Add-on to any website</p>   <!-- optional -->
+<article class="package-card row-span-4">
+    <h3 class="package-name">Signature</h3>
+    <div>
+        <p class="package-price-label">Starting at</p>      <!-- or an empty &nbsp; line to keep cards aligned -->
+        <p class="package-price">$3,500</p>
+        <p class="package-price-note">or $500 / year</p>     <!-- only on pages that use notes -->
     </div>
-    <p class="package-tagline">A clean, single-page website…</p>
+    <p class="package-tagline">A larger, fully custom website…</p>
     <ul class="check-list">
-        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Up to 5 sections…</li>
+        <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Content sections…</li>
     </ul>
 </article>
 ```
+
+Cards line up row by row: each card is a subgrid with one row per part (name, price, tagline, features), and `row-span-4` says how many parts it has (`row-span-2` on Social Media, which has no prices or taglines). Every card in a group must have the same parts; use an empty `<div></div>` for a missing tagline or feature list. The grid's column classes follow the number of cards: `sm:grid-cols-2 lg:grid-cols-4` for four, `md:grid-cols-3` for three, `md:grid-cols-2` plus `max-w-[820px] mx-auto` for two.
 
 When a price changes, update **every** place it appears:
 
@@ -243,7 +246,7 @@ Repeated styles are defined once as `@utility` blocks in `src/input.css`:
 |---|---|
 | Nav / footer | `nav-link`, `dropdown-link`, `mobile-nav-link`, `mobile-subnav-link`, `menu-bar`, `footer-link` |
 | Text | `section-title`, `cta-link`, `body-heading`, `body-copy`, `group-heading`, `group-intro`, `fine-print`, `inline-link` |
-| Service pages | `page-hero`, `page-title`, `page-motto`, `ticker-link`, `includes-box`, `includes-title`, `package-grid`, `package-card`, `package-name`, `package-price`, `package-price-note`, `package-tagline`, `check-list`, `check-item`, `check-mark` |
+| Service pages | `page-hero`, `page-title`, `page-motto`, `ticker-link`, `includes-title`, `include-chip`, `package-grid`, `package-card`, `package-name`, `package-price-label`, `package-price`, `package-price-note`, `package-tagline`, `check-list`, `check-item`, `check-mark` |
 | Forms | `form-label`, `form-input`, `form-error`, `form-status`, `form-submit` |
 | Accessibility | `focus-ring`, `focus-ring-light` |
 
