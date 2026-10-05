@@ -30,7 +30,7 @@ Everything needed to run, edit, troubleshoot and extend jelevenmedia.com.
 | I want to… | Do this |
 |---|---|
 | Preview the site locally | `npm run dev` in one terminal, `npx serve . -l 3000` in another, open port 3000 |
-| Preview with working forms | `npx vercel dev` (needs a `.env` file; see §14) |
+| Preview with a working contact form | `npm run local`, open port 3000 (needs a `.env` file; see §14) |
 | Rebuild CSS and shared pieces before committing | `npm run build` |
 | Publish a change | Commit → push to `main` → Vercel deploys automatically |
 | Change a price or package | Edit the matching service page's `.html` file (§7) |
@@ -72,7 +72,15 @@ npm run dev            # terminal 1: rebuilds CSS on every save
 npx serve . -l 3000    # terminal 2: serves the site
 ```
 
-Forms don't work in this mode because `/api` isn't running. For working forms use `npx vercel dev` with a `.env` file (copy `.env.example`).
+The contact form doesn't work in this mode because `npx serve` only serves files; it never runs the `/api` functions.
+
+**To test the contact form locally**, copy `.env.example` to `.env`, fill in your values, then:
+
+```bash
+npm run local        # site + /api at port 3000, settings read from .env
+```
+
+The terminal prints where emails go and shows any form errors (look for `contact form error`). Restart it after changing `.env`. (`npx vercel dev` also works, but needs a Vercel login and project link.)
 
 To publish:
 
@@ -116,6 +124,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 │   └── contact.js              Contact form handler
 ├── lib/contact-email.js        Branded email layout (not an endpoint)
 ├── scripts/includes.js         Build script that stamps partials into pages
+├── scripts/dev-server.js       Local server with working /api (npm run local)
 ├── images/                     All images (WebP where possible)
 ├── fonts/                      Self-hosted Playfair Display, Cormorant Garamond, Hanken Grotesk
 ├── sitemap.xml, robots.txt     Search engine files

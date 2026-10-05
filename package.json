@@ -4,6 +4,7 @@
   "description": "J Eleven Media — Custom websites and online stores for East Tennessee businesses",
   "scripts": {
     "build": "node scripts/includes.js && npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "local": "node scripts/dev-server.js",
     "watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
     "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
