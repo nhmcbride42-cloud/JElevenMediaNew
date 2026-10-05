@@ -168,7 +168,7 @@
             </li>
             <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
             <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
-            <li class="flex items-center"><a href="/#contact" class="nav-link">Contact Us</a></li>
+            <li class="flex items-center"><a href="/contact" class="nav-link">Contact Us</a></li>
         </ul>
 
         <button id="menu-button" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="z-[120] flex cursor-pointer flex-col gap-[5.5px] justify-self-end border-none bg-transparent p-2 lg:hidden focus-ring">
@@ -191,7 +191,7 @@
         </div>
         <a href="/#work" class="mobile-nav-link">Our Work</a>
         <a href="/#story-reveal" class="mobile-nav-link">Our Story</a>
-        <a href="/#contact" class="mobile-nav-link">Contact Us</a>
+        <a href="/contact" class="mobile-nav-link">Contact Us</a>
     </div>
 </nav>
 <!-- /include:nav --></header>
@@ -207,63 +207,191 @@
                     At J Eleven, we take on your vision like it&rsquo;s our own and help you achieve the online presence you deserve.
                 </p>
                 <div class="mx-auto mb-8 mt-10 h-px w-[60px] animate-[fade-in_1s_ease_1s_forwards] bg-line-2 opacity-0"></div>
-                <a href="#contact" class="cta-link animate-[fade-in_1s_ease_1.2s_forwards] opacity-0">Get started today &rarr;</a>
+                <a href="/contact" class="cta-link animate-[fade-in_1s_ease_1.2s_forwards] opacity-0">Get started today &rarr;</a>
             </div>
         </section>
 
         <!-- ── Our Services ── -->
-        <section id="services" data-full-section data-reveal-group aria-labelledby="services-heading" class="flex flex-col overflow-visible px-[5vw] pb-8 md:h-full md:overflow-hidden md:px-[6vw]">
-            <div class="flex shrink-0 flex-col gap-2 py-4 md:py-[1.2rem]">
+        <!-- Tabs: js/home.js shows one panel at a time; without JavaScript every panel shows. -->
+        <section id="services" data-full-section aria-labelledby="services-heading" class="flex flex-col overflow-visible px-[5vw] pb-10 md:h-full md:overflow-hidden md:px-[6vw] md:pb-0">
+            <div class="flex shrink-0 items-center py-4 md:py-[1.2rem]">
                 <h2 id="services-heading" class="section-title font-cormorant text-cocoa">Our Services</h2>
-                <p class="max-w-[60ch] font-cormorant text-[clamp(1.15rem,1.6vw,1.4rem)] italic leading-[1.5] text-ink-soft">Everything your business needs to look great online and stay that way, built by hand in East Tennessee.</p>
             </div>
 
-            <div class="grid flex-1 grid-cols-1 content-center gap-4 py-4 sm:grid-cols-2 lg:grid-cols-5 md:py-0">
-                <a href="/web-design" data-reveal data-delay="200" class="group flex flex-col gap-4 rounded-[24px] bg-white p-6 no-underline transition-[opacity,translate] focus-ring md:min-h-[min(400px,48vh)] md:duration-[900ms] md:ease-snap md:hover:-translate-y-1 js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100">
-                    <span aria-hidden="true" class="flex size-14 shrink-0 items-center justify-center rounded-full bg-clay/10 p-3 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="40" height="30" rx="2"/><line x1="4" y1="17" x2="44" y2="17"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="24" x2="36" y2="24"/><line x1="12" y1="29" x2="30" y2="29"/><line x1="12" y1="34" x2="24" y2="34"/></svg></span>
-                    <h3 class="font-playfair text-[clamp(1.4rem,1.7vw,1.6rem)] font-normal leading-[1.1] text-ink">Web Design</h3>
-                    <p class="font-playfair text-[0.9rem] leading-[1.6] text-ink-faint">Custom websites designed and coded by hand. No templates, no page builders.</p>
-                    <div class="mt-auto flex flex-col gap-2 border-t border-line pt-4">
-                        <span class="font-playfair text-[1.1rem] text-clay">From $500</span>
-                        <span class="font-playfair text-[0.8rem] font-semibold tracking-[0.04em] text-ink-soft transition-[letter-spacing] duration-200 group-hover:tracking-[0.08em]">Learn more &rarr;</span>
-                    </div>
-                </a>
-                <a href="/online-stores" data-reveal data-delay="400" class="group flex flex-col gap-4 rounded-[24px] bg-white p-6 no-underline transition-[opacity,translate] focus-ring md:min-h-[min(400px,48vh)] md:duration-[900ms] md:ease-snap md:hover:-translate-y-1 js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100">
-                    <span aria-hidden="true" class="flex size-14 shrink-0 items-center justify-center rounded-full bg-clay/10 p-3 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16 H38 L36 42 H12 Z"/><path d="M18 20 V13 A6 6 0 0 1 30 13 V20"/><circle cx="18" cy="20" r="1.2" fill="currentColor" stroke="none"/><circle cx="30" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
-                    <h3 class="font-playfair text-[clamp(1.4rem,1.7vw,1.6rem)] font-normal leading-[1.1] text-ink">Online Stores</h3>
-                    <p class="font-playfair text-[0.9rem] leading-[1.6] text-ink-faint">Sell a few items from your website, or launch a full Shopify store.</p>
-                    <div class="mt-auto flex flex-col gap-2 border-t border-line pt-4">
-                        <span class="font-playfair text-[1.1rem] text-clay">From $500</span>
-                        <span class="font-playfair text-[0.8rem] font-semibold tracking-[0.04em] text-ink-soft transition-[letter-spacing] duration-200 group-hover:tracking-[0.08em]">Learn more &rarr;</span>
-                    </div>
-                </a>
-                <a href="/care-plans" data-reveal data-delay="600" class="group flex flex-col gap-4 rounded-[24px] bg-white p-6 no-underline transition-[opacity,translate] focus-ring md:min-h-[min(400px,48vh)] md:duration-[900ms] md:ease-snap md:hover:-translate-y-1 js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100">
-                    <span aria-hidden="true" class="flex size-14 shrink-0 items-center justify-center rounded-full bg-clay/10 p-3 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 24 A14 14 0 1 1 24 10"/><polyline points="24,4 24,10 30,10"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="14" x2="24" y2="21"/><line x1="24" y1="27" x2="24" y2="30"/><line x1="30" y1="24" x2="34" y2="24"/></svg></span>
-                    <h3 class="font-playfair text-[clamp(1.4rem,1.7vw,1.6rem)] font-normal leading-[1.1] text-ink">Care Plans</h3>
-                    <p class="font-playfair text-[0.9rem] leading-[1.6] text-ink-faint">Hosting, security, and monthly updates handled for you.</p>
-                    <div class="mt-auto flex flex-col gap-2 border-t border-line pt-4">
-                        <span class="font-playfair text-[1.1rem] text-clay">From $50/month</span>
-                        <span class="font-playfair text-[0.8rem] font-semibold tracking-[0.04em] text-ink-soft transition-[letter-spacing] duration-200 group-hover:tracking-[0.08em]">Learn more &rarr;</span>
-                    </div>
-                </a>
-                <a href="/add-ons" data-reveal data-delay="800" class="group flex flex-col gap-4 rounded-[24px] bg-white p-6 no-underline transition-[opacity,translate] focus-ring md:min-h-[min(400px,48vh)] md:duration-[900ms] md:ease-snap md:hover:-translate-y-1 js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100">
-                    <span aria-hidden="true" class="flex size-14 shrink-0 items-center justify-center rounded-full bg-clay/10 p-3 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><line x1="29.5" y1="29.5" x2="42" y2="42"/><polyline points="13,26 16,21 20,24 26,15"/><polyline points="22,15 26,15 26,19"/></svg></span>
-                    <h3 class="font-playfair text-[clamp(1.4rem,1.7vw,1.6rem)] font-normal leading-[1.1] text-ink">Add-Ons</h3>
-                    <p class="font-playfair text-[0.9rem] leading-[1.6] text-ink-faint">Google Business Profile, extra pages and products, and connecting your tools.</p>
-                    <div class="mt-auto flex flex-col gap-2 border-t border-line pt-4">
-                        <span class="font-playfair text-[1.1rem] text-clay">Priced per add-on</span>
-                        <span class="font-playfair text-[0.8rem] font-semibold tracking-[0.04em] text-ink-soft transition-[letter-spacing] duration-200 group-hover:tracking-[0.08em]">Learn more &rarr;</span>
-                    </div>
-                </a>
-                <a href="/social-media" data-reveal data-delay="1000" class="group flex flex-col gap-4 rounded-[24px] bg-white p-6 no-underline transition-[opacity,translate] focus-ring md:min-h-[min(400px,48vh)] md:duration-[900ms] md:ease-snap md:hover:-translate-y-1 js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100">
-                    <span aria-hidden="true" class="flex size-14 shrink-0 items-center justify-center rounded-full bg-clay/10 p-3 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="40" x2="8" y2="10"/><line x1="8" y1="40" x2="42" y2="40"/><polyline points="10,36 18,28 26,30 36,18 42,12"/><circle cx="10" cy="36" r="1.8" fill="currentColor" stroke="none"/><circle cx="18" cy="28" r="1.8" fill="currentColor" stroke="none"/><circle cx="26" cy="30" r="1.8" fill="currentColor" stroke="none"/><circle cx="36" cy="18" r="1.8" fill="currentColor" stroke="none"/><circle cx="42" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg></span>
-                    <h3 class="font-playfair text-[clamp(1.4rem,1.7vw,1.6rem)] font-normal leading-[1.1] text-ink">Social Media</h3>
-                    <p class="font-playfair text-[0.9rem] leading-[1.6] text-ink-faint">Strategy, content, and scheduling so you can hit the ground running.</p>
-                    <div class="mt-auto flex flex-col gap-2 border-t border-line pt-4">
-                        <span class="font-playfair text-[1.1rem] text-clay">Ask for pricing</span>
-                        <span class="font-playfair text-[0.8rem] font-semibold tracking-[0.04em] text-ink-soft transition-[letter-spacing] duration-200 group-hover:tracking-[0.08em]">Learn more &rarr;</span>
-                    </div>
-                </a>
+            <div data-tabs class="grid flex-1 grid-cols-1 content-center gap-6 md:grid-cols-[minmax(250px,300px)_1fr] md:items-center md:gap-12 md:pb-[3vh]">
+                <div role="tablist" aria-label="Services" aria-orientation="vertical" class="flex gap-1 overflow-x-auto pb-1 md:flex-col md:gap-0 md:overflow-visible md:pb-0">
+                    <button type="button" role="tab" id="tab-web" aria-controls="panel-web" aria-selected="true" tabindex="0" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring md:border-b-0 md:border-l-2 md:py-4 md:pl-6">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="40" height="30" rx="2"/><line x1="4" y1="17" x2="44" y2="17"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="24" x2="36" y2="24"/><line x1="12" y1="29" x2="30" y2="29"/><line x1="12" y1="34" x2="24" y2="34"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="font-playfair text-[1.2rem] leading-none text-ink md:text-[1.45rem]">Web Design</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay md:block">From $500</span>
+                        </span>
+                    </button>
+                    <button type="button" role="tab" id="tab-stores" aria-controls="panel-stores" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring md:border-b-0 md:border-l-2 md:py-4 md:pl-6">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16 H38 L36 42 H12 Z"/><path d="M18 20 V13 A6 6 0 0 1 30 13 V20"/><circle cx="18" cy="20" r="1.2" fill="currentColor" stroke="none"/><circle cx="30" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="font-playfair text-[1.2rem] leading-none text-ink md:text-[1.45rem]">Online Stores</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay md:block">From $500</span>
+                        </span>
+                    </button>
+                    <button type="button" role="tab" id="tab-care" aria-controls="panel-care" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring md:border-b-0 md:border-l-2 md:py-4 md:pl-6">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 24 A14 14 0 1 1 24 10"/><polyline points="24,4 24,10 30,10"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="14" x2="24" y2="21"/><line x1="24" y1="27" x2="24" y2="30"/><line x1="30" y1="24" x2="34" y2="24"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="font-playfair text-[1.2rem] leading-none text-ink md:text-[1.45rem]">Care Plans</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay md:block">From $50/month</span>
+                        </span>
+                    </button>
+                    <button type="button" role="tab" id="tab-addons" aria-controls="panel-addons" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring md:border-b-0 md:border-l-2 md:py-4 md:pl-6">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><line x1="29.5" y1="29.5" x2="42" y2="42"/><polyline points="13,26 16,21 20,24 26,15"/><polyline points="22,15 26,15 26,19"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="font-playfair text-[1.2rem] leading-none text-ink md:text-[1.45rem]">Add-Ons</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay md:block">Priced per add-on</span>
+                        </span>
+                    </button>
+                    <button type="button" role="tab" id="tab-social" aria-controls="panel-social" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring md:border-b-0 md:border-l-2 md:py-4 md:pl-6">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="40" x2="8" y2="10"/><line x1="8" y1="40" x2="42" y2="40"/><polyline points="10,36 18,28 26,30 36,18 42,12"/><circle cx="10" cy="36" r="1.8" fill="currentColor" stroke="none"/><circle cx="18" cy="28" r="1.8" fill="currentColor" stroke="none"/><circle cx="26" cy="30" r="1.8" fill="currentColor" stroke="none"/><circle cx="36" cy="18" r="1.8" fill="currentColor" stroke="none"/><circle cx="42" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg></span>
+                        <span class="flex flex-col">
+                            <span class="font-playfair text-[1.2rem] leading-none text-ink md:text-[1.45rem]">Social Media</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay md:block">Ask for pricing</span>
+                        </span>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-6">
+                <div role="tabpanel" id="panel-web" aria-labelledby="tab-web" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Web Design</h3>
+                    <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Every site is designed and coded by hand. No templates, no page builders. Just a website built around your brand that works on every phone and is easy for Google to find.</p>
+                    <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Custom design</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>A mobile-friendly layout</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Domain, DNS, and SSL setup</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>A working contact form</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Basic search setup so Google can find you</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Unlimited revisions until you&rsquo;re happy</li>
+                    </ul>
+                    <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 md:grid-cols-4">
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Starter</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$500</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">1 page</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Essentials</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$1,000</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Up to 3 pages</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Studio</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$2,000</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Up to 10 pages</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Signature</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay"><span class="font-cormorant text-[1rem] italic text-ink-faint">from </span>$3,500</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">10+ pages</span></dd>
+                        </div>
+                    </dl>
+                    <a href="/web-design" class="cta-link self-start">See all website packages &rarr;</a>
+                </div>
+                <div role="tabpanel" id="panel-stores" aria-labelledby="tab-stores" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Online Stores</h3>
+                    <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Built on Shopify, the platform trusted by millions of businesses. Sell a handful of items right from your website, or launch a complete storefront.</p>
+                    <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>A design matched to your brand</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Payment, shipping, and tax setup</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>A mobile-friendly shopping experience</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Unlimited revisions until you&rsquo;re happy</li>
+                    </ul>
+                    <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 md:grid-cols-4">
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Simple Online Sales</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$500</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Up to 10 products</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Shop Essentials</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$2,000</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Up to 15 products</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Shop Studio</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$4,000</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Up to 50 products</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Shop Signature</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay"><span class="font-cormorant text-[1rem] italic text-ink-faint">from </span>$6,000</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Larger catalogs</span></dd>
+                        </div>
+                    </dl>
+                    <a href="/online-stores" class="cta-link self-start">See all store packages &rarr;</a>
+                </div>
+                <div role="tabpanel" id="panel-care" aria-labelledby="tab-care" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Care Plans</h3>
+                    <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Hosting, security, and updates handled for you, so your site stays fast and current and you never have to think about it.</p>
+                    <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Hosting, SSL security, and uptime monitoring</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Domain renewal handled for you</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Contact form monitoring</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Monthly updates to text, photos, or hours</li>
+                    </ul>
+                    <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 md:grid-cols-4">
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Care</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$50/mo</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">or $500/year</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Care Plus</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$100/mo</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">or $1,000/year</span></dd>
+                        </div>
+                    </dl>
+                    <a href="/care-plans" class="cta-link self-start">See care plan details &rarr;</a>
+                </div>
+                <div role="tabpanel" id="panel-addons" aria-labelledby="tab-addons" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Add-Ons</h3>
+                    <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Mix into any website or store package to get exactly what your business needs, without jumping to a bigger package.</p>
+                    <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Show up properly on Google Search and Maps</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Add pages or products beyond your package</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Connect your booking calendar or CRM</li>
+                    </ul>
+                    <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 md:grid-cols-4">
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Google Business Profile</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$350</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">one-time</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Extra Pages</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$200</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">per page</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Extra Products</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay">$5&ndash;$15</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">per product</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Connecting Your Tools</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-playfair text-[1.6rem] leading-none text-clay"><span class="font-cormorant text-[1rem] italic text-ink-faint">from </span>$300</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">booking, CRM, and more</span></dd>
+                        </div>
+                    </dl>
+                    <a href="/add-ons" class="cta-link self-start">See all add-ons &rarr;</a>
+                </div>
+                <div role="tabpanel" id="panel-social" aria-labelledby="tab-social" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Social Media</h3>
+                    <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">A social media toolkit with strategy, content creation, and scheduling so you can hit the ground running and keep it going.</p>
+                    <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Profile audit and setup</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Brand guide and template sets</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Pre-made content and a content calendar</li>
+                        <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Training calls so you can keep it going</li>
+                    </ul>
+                    <dl class="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 md:grid-cols-4">
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Core</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-cormorant text-[1.05rem] italic text-ink-soft">Setup and training</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Growth</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-cormorant text-[1.05rem] italic text-ink-soft">4 weeks of content</span></dd>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <dt class="font-playfair text-[0.95rem] font-semibold text-ink">Elite</dt>
+                            <dd class="flex flex-col gap-0.5"><span class="font-cormorant text-[1.05rem] italic text-ink-soft">8 weeks of content</span></dd>
+                        </div>
+                    </dl>
+                    <a href="/social-media" class="cta-link self-start">See social media packages &rarr;</a>
+                </div>
+                </div>
             </div>
         </section>
 
@@ -384,83 +512,37 @@
             </div>
         </section>
 
-        <!-- ── Contact ── -->
-        <section id="contact" data-full-section aria-labelledby="contact-heading" class="flex flex-col overflow-visible bg-cocoa px-[5vw] pb-8 md:h-full md:overflow-hidden md:px-[6vw] md:pb-0">
-            <div class="flex shrink-0 items-center py-[1.2rem]">
-                <h2 id="contact-heading" class="section-title font-playfair text-paper">Contact Us</h2>
-            </div>
-
-            <div class="grid min-h-0 flex-1 grid-cols-1 gap-6 pb-4 md:grid-cols-[1fr_1.4fr] md:gap-[4vw] md:pb-[2vh]">
-
-                <!-- Contact info + socials -->
-                <div class="flex flex-col justify-center">
-                    <div class="flex flex-col gap-[0.4rem] py-[1.4rem]">
-                        <span aria-hidden="true" class="size-5 shrink-0 rounded-full bg-paper/40"></span>
-                        <h3 class="font-playfair text-[clamp(1.4rem,2vw,2.2rem)] font-normal leading-[1.1] tracking-[-0.01em] text-paper">Email</h3>
-                        <a href="mailto:jelevenmedia@gmail.com" class="self-start font-playfair text-[clamp(0.9rem,1.1vw,1.2rem)] leading-[1.5] text-paper/70 no-underline transition-colors duration-200 hover:text-paper focus-ring-light">jelevenmedia@gmail.com</a>
-                    </div>
-                    <div class="h-px w-full bg-paper/25"></div>
-                    <div class="flex flex-col gap-[0.4rem] py-[1.4rem]">
-                        <span aria-hidden="true" class="size-5 shrink-0 rounded-full bg-paper/40"></span>
-                        <h3 class="font-playfair text-[clamp(1.4rem,2vw,2.2rem)] font-normal leading-[1.1] tracking-[-0.01em] text-paper">Phone</h3>
-                        <a href="tel:+18656840526" class="self-start font-playfair text-[clamp(0.9rem,1.1vw,1.2rem)] leading-[1.5] text-paper/70 no-underline transition-colors duration-200 hover:text-paper focus-ring-light">(865) 684-0526</a>
-                    </div>
-                    <div class="h-px w-full bg-paper/25"></div>
-                    <div class="flex flex-col gap-[0.4rem] py-[1.4rem]">
-                        <span aria-hidden="true" class="size-5 shrink-0 rounded-full bg-paper/40"></span>
-                        <h3 class="font-playfair text-[clamp(1.4rem,2vw,2.2rem)] font-normal leading-[1.1] tracking-[-0.01em] text-paper">Follow Us</h3>
-                        <div class="flex flex-col items-start gap-2">
-                            <a href="https://www.facebook.com/profile.php?id=61585042963260" target="_blank" rel="noopener noreferrer" class="flex items-center gap-[0.6rem] font-playfair text-[clamp(0.9rem,1.1vw,1.2rem)] text-paper/70 no-underline transition-colors duration-200 hover:text-paper focus-ring-light">
-                                <svg viewBox="0 0 24 24" fill="currentColor" class="size-[18px] shrink-0" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                                Facebook<span class="sr-only"> (opens in a new tab)</span>
-                            </a>
-                            <a href="https://www.instagram.com/jelevenmedia/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-[0.6rem] font-playfair text-[clamp(0.9rem,1.1vw,1.2rem)] text-paper/70 no-underline transition-colors duration-200 hover:text-paper focus-ring-light">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-[18px] shrink-0" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
-                                Instagram<span class="sr-only"> (opens in a new tab)</span>
-                            </a>
-                        </div>
-                    </div>
+        <!-- ── Get started ── -->
+        <section id="get-started" aria-labelledby="get-started-heading" class="px-[5vw] py-14 md:px-[6vw] md:py-24">
+            <div class="mx-auto flex max-w-[1200px] flex-col items-center gap-10 rounded-[32px] bg-white px-6 py-12 text-center md:px-14 md:py-16">
+                <div class="flex flex-col items-center gap-4">
+                    <h2 id="get-started-heading" class="font-playfair text-[clamp(2.2rem,4vw,3.4rem)] font-normal leading-[1.1] text-cocoa">Getting started is simple.</h2>
+                    <p class="max-w-[52ch] font-cormorant text-[clamp(1.15rem,1.6vw,1.35rem)] italic leading-[1.5] text-ink-soft">No pressure and no jargon. Just a conversation about what your business needs.</p>
                 </div>
-
-                <!-- Contact form -->
-                <div class="flex flex-col justify-center">
-                    <form id="contact-form" data-contact-form novalidate class="my-auto flex h-full max-h-[560px] flex-col gap-4">
-                        <input type="hidden" name="csrf_token" data-csrf>
-                        <div class="hidden" aria-hidden="true">
-                            <label for="contact-hp">Leave this field empty</label>
-                            <input type="text" id="contact-hp" name="hp_field" tabindex="-1" autocomplete="off">
-                        </div>
-
-                        <div class="grid grid-cols-1 gap-4 min-[481px]:grid-cols-2">
-                            <div class="flex flex-col gap-[0.3rem]">
-                                <label for="name" class="form-label">Name</label>
-                                <input id="name" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Your name" aria-describedby="name-error" class="form-input">
-                                <p id="name-error" data-error="name" class="form-error hidden" role="alert"></p>
-                            </div>
-                            <div class="flex flex-col gap-[0.3rem]">
-                                <label for="email" class="form-label">Email</label>
-                                <input id="email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="your@email.com" aria-describedby="email-error" class="form-input">
-                                <p id="email-error" data-error="email" class="form-error hidden" role="alert"></p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-[0.3rem]">
-                            <label for="phone" class="form-label">Phone <span class="font-normal italic text-paper/60">(optional)</span></label>
-                            <input id="phone" name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="(865) 000-0000" aria-describedby="phone-error" class="form-input">
-                            <p id="phone-error" data-error="phone" class="form-error hidden" role="alert"></p>
-                        </div>
-
-                        <div class="flex min-h-0 flex-1 flex-col gap-[0.3rem]">
-                            <label for="message" class="form-label">What do you need?</label>
-                            <textarea id="message" name="message" required maxlength="2000" rows="5" placeholder="Tell us a little about your project..." aria-describedby="message-error" class="form-input min-h-[120px] flex-1 resize-none"></textarea>
-                            <p id="message-error" data-error="message" class="form-error hidden" role="alert"></p>
-                        </div>
-
-                        <p data-form-status class="form-status hidden" role="status" aria-live="polite"></p>
-                        <button type="submit" class="form-submit self-stretch md:self-start">Send message &rarr;</button>
-                    </form>
+                <ol class="grid w-full list-none grid-cols-1 gap-8 md:grid-cols-3 md:gap-0 md:divide-x md:divide-line">
+                    <li class="flex flex-col items-center gap-2 px-6">
+                        <span class="font-cormorant text-[2.6rem] italic leading-none text-clay">01</span>
+                        <span class="font-playfair text-[1.35rem] text-ink">Tell us about your business</span>
+                        <span class="font-cormorant text-[1.15rem] italic text-ink-soft">Fill out a short form or give us a call.</span>
+                    </li>
+                    <li class="flex flex-col items-center gap-2 px-6">
+                        <span class="font-cormorant text-[2.6rem] italic leading-none text-clay">02</span>
+                        <span class="font-playfair text-[1.35rem] text-ink">We design and build</span>
+                        <span class="font-cormorant text-[1.15rem] italic text-ink-soft">Unlimited revisions until you&rsquo;re happy.</span>
+                    </li>
+                    <li class="flex flex-col items-center gap-2 px-6">
+                        <span class="font-cormorant text-[2.6rem] italic leading-none text-clay">03</span>
+                        <span class="font-playfair text-[1.35rem] text-ink">Launch</span>
+                        <span class="font-cormorant text-[1.15rem] italic text-ink-soft">We handle the domain, security, and setup.</span>
+                    </li>
+                </ol>
+                <div class="flex flex-col items-center gap-3 sm:flex-row">
+                    <a href="/contact" class="btn-dark">Start your project &rarr;</a>
+                    <a href="tel:+18656840526" class="btn-outline">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="size-[18px]" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Call 865-684-0526
+                    </a>
                 </div>
-
             </div>
         </section>
 
@@ -489,6 +571,7 @@
             <h2 class="mb-2 font-playfair text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-paper/50">Contact</h2>
             <a href="tel:+18656840526" class="footer-link">(865) 684-0526</a>
             <a href="mailto:jelevenmedia@gmail.com" class="footer-link">jelevenmedia@gmail.com</a>
+            <a href="/contact" class="footer-link">Start a project &rarr;</a>
             <div class="mt-2 flex gap-4">
                 <a href="https://www.facebook.com/profile.php?id=61585042963260" target="_blank" rel="noopener noreferrer" aria-label="J Eleven Media on Facebook (opens in a new tab)" class="footer-link">
                     <svg viewBox="0 0 24 24" fill="currentColor" class="size-[18px]" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -507,6 +590,5 @@
 <!-- /include:footer -->
     </main>
 
-    <script src="/js/contact.js" defer></script>
 </body>
 </html>

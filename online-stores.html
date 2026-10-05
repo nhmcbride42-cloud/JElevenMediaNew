@@ -158,7 +158,7 @@
             </li>
             <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
             <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
-            <li class="flex items-center"><a href="/#contact" class="nav-link">Contact Us</a></li>
+            <li class="flex items-center"><a href="/contact" class="nav-link">Contact Us</a></li>
         </ul>
 
         <button id="menu-button" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu" class="z-[120] flex cursor-pointer flex-col gap-[5.5px] justify-self-end border-none bg-transparent p-2 lg:hidden focus-ring">
@@ -181,7 +181,7 @@
         </div>
         <a href="/#work" class="mobile-nav-link">Our Work</a>
         <a href="/#story-reveal" class="mobile-nav-link">Our Story</a>
-        <a href="/#contact" class="mobile-nav-link">Contact Us</a>
+        <a href="/contact" class="mobile-nav-link">Contact Us</a>
     </div>
 </nav>
 <!-- /include:nav --></header>
@@ -307,7 +307,7 @@
         <!-- Call to action -->
         <div class="flex flex-col items-center gap-3 border-t border-line-2 px-6 py-[clamp(2rem,5vh,3.5rem)] text-center">
             <p class="font-cormorant text-[clamp(1.15rem,1.6vw,1.45rem)] italic text-ink-soft">Tell us what you sell and we'll recommend the right setup for your store.</p>
-            <a href="/#contact" data-contact-modal class="cta-link">Get Started Today &rarr;</a>
+            <a href="/contact" class="cta-link">Get Started Today &rarr;</a>
         </div>
 
     </main>
@@ -337,6 +337,7 @@
             <h2 class="mb-2 font-playfair text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-paper/50">Contact</h2>
             <a href="tel:+18656840526" class="footer-link">(865) 684-0526</a>
             <a href="mailto:jelevenmedia@gmail.com" class="footer-link">jelevenmedia@gmail.com</a>
+            <a href="/contact" class="footer-link">Start a project &rarr;</a>
             <div class="mt-2 flex gap-4">
                 <a href="https://www.facebook.com/profile.php?id=61585042963260" target="_blank" rel="noopener noreferrer" aria-label="J Eleven Media on Facebook (opens in a new tab)" class="footer-link">
                     <svg viewBox="0 0 24 24" fill="currentColor" class="size-[18px]" aria-hidden="true" focusable="false"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -353,53 +354,5 @@
     </div>
 </footer>
 <!-- /include:footer -->
-    <!-- include:contact-modal -->
-<div id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden class="fixed inset-0 z-[500] flex items-center justify-center overflow-y-auto bg-ink/55 p-6 backdrop-blur-[4px]">
-    <div class="relative flex w-full max-w-[560px] flex-col gap-4 rounded-[20px] bg-cocoa p-[clamp(1.8rem,4vw,3rem)]">
-        <button type="button" data-modal-close aria-label="Close" class="absolute right-[1.2rem] top-4 cursor-pointer border-none bg-transparent p-1 text-base leading-none text-paper/50 transition-colors duration-200 hover:text-paper focus-ring-light">&#10005;</button>
-
-        <h2 id="modal-title" class="font-playfair text-[clamp(1.6rem,3vw,2.2rem)] font-medium leading-[1.1] text-paper">Let&rsquo;s get started today.</h2>
-        <p class="-mt-1 font-cormorant text-[clamp(0.95rem,1.2vw,1.1rem)] italic leading-[1.5] text-paper/60">Tell us a little about what you&rsquo;re needing and we&rsquo;ll reach out.</p>
-
-        <form id="modal-form" data-contact-form class="flex flex-col gap-3" novalidate>
-            <input type="hidden" name="csrf_token" data-csrf>
-            <div class="hidden" aria-hidden="true">
-                <label for="modal-hp">Leave this field empty</label>
-                <input type="text" id="modal-hp" name="hp_field" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="grid grid-cols-1 gap-3 min-[481px]:grid-cols-2">
-                <div class="flex flex-col gap-[0.3rem]">
-                    <label for="modal-name" class="form-label">Name</label>
-                    <input id="modal-name" name="name" type="text" required maxlength="100" autocomplete="name" placeholder="Your name" aria-describedby="modal-name-error" class="form-input">
-                    <p id="modal-name-error" data-error="name" class="form-error hidden" role="alert"></p>
-                </div>
-                <div class="flex flex-col gap-[0.3rem]">
-                    <label for="modal-email" class="form-label">Email</label>
-                    <input id="modal-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="your@email.com" aria-describedby="modal-email-error" class="form-input">
-                    <p id="modal-email-error" data-error="email" class="form-error hidden" role="alert"></p>
-                </div>
-            </div>
-            <fieldset class="flex flex-col gap-[0.4rem]">
-                <legend class="form-label mb-[0.4rem]">What are you interested in?</legend>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-[0.4rem]">
-                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="website" class="size-[15px] shrink-0 cursor-pointer accent-clay">Website</label>
-                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="online-store" class="size-[15px] shrink-0 cursor-pointer accent-clay">Online Store</label>
-                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="care-plan" class="size-[15px] shrink-0 cursor-pointer accent-clay">Care Plan</label>
-                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="add-ons" class="size-[15px] shrink-0 cursor-pointer accent-clay">Add-Ons</label>
-                    <label class="flex cursor-pointer items-center gap-2 font-cormorant text-base text-paper/80"><input type="checkbox" name="services" value="social-media" class="size-[15px] shrink-0 cursor-pointer accent-clay">Social Media</label>
-                </div>
-            </fieldset>
-            <div class="flex flex-col gap-[0.3rem]">
-                <label for="modal-message" class="form-label">What do you need?</label>
-                <textarea id="modal-message" name="message" required maxlength="2000" rows="4" placeholder="Tell us a little about your project..." aria-describedby="modal-message-error" class="form-input min-h-[110px] resize-none"></textarea>
-                <p id="modal-message-error" data-error="message" class="form-error hidden" role="alert"></p>
-            </div>
-            <p data-form-status class="form-status hidden" role="status" aria-live="polite"></p>
-            <button type="submit" class="form-submit self-end">Send message &rarr;</button>
-        </form>
-    </div>
-</div>
-<!-- /include:contact-modal -->
-    <script src="/js/contact.js" defer></script>
 </body>
 </html>

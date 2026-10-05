@@ -2,8 +2,7 @@
 //
 // POST /api/contact
 //
-// Validates and processes both contact forms (homepage section and the
-// "Get Started" pop-up on service pages). Every layer here assumes the
+// Validates and processes the project form on the Contact page (/contact). Every layer here assumes the
 // client-side checks have already been bypassed by the time a request
 // reaches this function — this is the layer that actually enforces security
 // and data integrity.
@@ -20,15 +19,50 @@ const crypto = require('crypto');
 const { renderContactEmail } = require('../lib/contact-email');
 
 // --- Email display labels ---------------------------------------------
-// The pop-up's checkboxes store short slugs; these map each slug back to the
-// text a person actually reads.
-const SERVICE_LABELS = {
-  website: 'Website',
-  'online-store': 'Online Store',
-  'care-plan': 'Care Plan',
-  'add-ons': 'Add-Ons',
-  'social-media': 'Social Media',
+// The tap-to-select options and dropdowns store short slugs; these map each
+// slug back to the text a person actually reads. Keep them in sync with the
+// option values in contact.html.
+const LABELS = {
+  contact_method: { email: 'Email', phone: 'Phone call', text: 'Text' },
+  needs: {
+    'new-website': 'New website',
+    redesign: 'Redesign current site',
+    'online-store': 'Online store',
+    'care-plan': 'Care plan / hosting',
+    'google-business-profile': 'Google Business Profile',
+    'social-media': 'Social media',
+    'not-sure': 'Not sure yet',
+  },
+  package: {
+    starter: 'Starter ($500)',
+    essentials: 'Essentials ($1,000)',
+    studio: 'Studio ($2,000)',
+    signature: 'Signature (from $3,500)',
+    'simple-online-sales': 'Simple Online Sales ($500)',
+    'shop-essentials': 'Shop Essentials ($2,000)',
+    'shop-studio': 'Shop Studio ($4,000)',
+    'shop-signature': 'Shop Signature (from $6,000)',
+    care: 'Care ($50/month)',
+    'care-plus': 'Care Plus ($100/month)',
+    'not-sure': 'Not sure yet',
+  },
+  budget: {
+    'under-1000': 'Under $1,000',
+    '1000-2000': '$1,000 - $2,000',
+    '2000-4000': '$2,000 - $4,000',
+    '4000-plus': '$4,000+',
+    'not-sure': 'Not sure yet',
+  },
+  pages: { 1: '1 page', '2-3': '2-3 pages', 'up-to-10': 'Up to 10', '10-plus': '10+', 'not-sure': 'Not sure' },
+  timeline: { asap: 'As soon as possible', '1-2-months': 'In 1-2 months', '3-plus-months': '3+ months', flexible: 'Flexible' },
+  logo: { yes: 'Yes', no: 'No', 'need-help': 'Needs help with one' },
+  content_ready: { yes: 'Yes', some: 'Some of it', 'not-yet': 'Not yet' },
+  referral: { google: 'Google search', facebook: 'Facebook', instagram: 'Instagram', referral: 'A friend or client', other: 'Other' },
 };
+// Allowed values for a field, with '' meaning "not answered".
+const choice = (field) => z.enum(['', ...Object.keys(LABELS[field])]).optional().default('');
+const label = (field, value) => (value ? LABELS[field][value] : 'Not provided');
+const orNotProvided = (value) => value || 'Not provided';
 
 const app = express();
 
@@ -71,7 +105,10 @@ app.use(contactLimiter);
 // header injection vector.
 const noHeaderInjection = (val) => !/[\r\n]/.test(val);
 
+const optionalText = (max) => z.string().trim().max(max, `Must be under ${max} characters.`).optional().default('');
+
 const ContactSchema = z.object({
+  // Step 1: about you
   name: z
     .string()
     .trim()
@@ -85,17 +122,26 @@ const ContactSchema = z.object({
     .max(254, 'Email is too long.')
     .email('Enter a valid email address.')
     .refine(noHeaderInjection, 'Email contains invalid characters.'),
-  phone: z.string().trim().max(30, 'Phone number is too long.').optional().default(''),
-  services: z
-    .array(z.enum(['website', 'online-store', 'care-plan', 'add-ons', 'social-media']))
-    .max(5)
-    .optional()
-    .default([]),
+  phone: optionalText(30),
+  business: optionalText(150),
+  website: optionalText(200),
+  contact_method: choice('contact_method'),
+  // Step 2: the project
+  needs: z.array(z.enum(Object.keys(LABELS.needs))).max(7).optional().default([]),
+  package: choice('package'),
+  budget: choice('budget'),
+  pages: choice('pages'),
+  timeline: choice('timeline'),
+  // Step 3: details
+  logo: choice('logo'),
+  content_ready: choice('content_ready'),
+  sites_you_like: optionalText(500),
   message: z
     .string()
     .trim()
-    .min(1, 'Message is required.')
+    .min(1, 'Please tell us a little about your business.')
     .max(2000, 'Message must be under 2000 characters.'),
+  referral: choice('referral'),
   // Honeypot: legitimate users never see or fill this field.
   hp_field: z.string().optional().default(''),
   csrf_token: z.string().optional().default(''),
@@ -132,28 +178,41 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'Validation failed.', fieldErrors });
     }
 
-    const { name, email, phone, services, message, hp_field } = parsed.data;
+    const d = parsed.data;
 
     // --- 3. Honeypot check ---------------------------------------------------
     // If the hidden field is filled in, this is almost certainly a bot.
     // Respond with a normal-looking success so automated scripts don't learn
     // the submission was detected, but skip sending anything.
-    if (hp_field && hp_field.trim() !== '') {
+    if (d.hp_field && d.hp_field.trim() !== '') {
       return res.status(200).json({ success: true });
     }
 
-    // --- 4. Build the email rows ---------------------------------------------
+    // --- 4. Build the email rows -------------------------------------------
+    // A row with a null label is a section heading.
     const rows = [
-      ['Name', name],
-      ['Email', email],
-      ['Phone', phone || 'Not provided'],
+      [null, 'About them'],
+      ['Name', d.name],
+      ['Email', d.email],
+      ['Phone', orNotProvided(d.phone)],
+      ['Business', orNotProvided(d.business)],
+      ['Current website', orNotProvided(d.website)],
+      ['Best way to reach them', label('contact_method', d.contact_method)],
+      [null, 'The project'],
+      ['Needs', d.needs.length ? d.needs.map((n) => LABELS.needs[n]).join(', ') : 'Not provided'],
+      ['Package', label('package', d.package)],
+      ['Budget', label('budget', d.budget)],
+      ['Pages', label('pages', d.pages)],
+      ['Launch', label('timeline', d.timeline)],
+      [null, 'Details'],
+      ['Has a logo', label('logo', d.logo)],
+      ['Text and photos ready', label('content_ready', d.content_ready)],
+      ['Websites they like', orNotProvided(d.sites_you_like)],
+      ['Heard about us', label('referral', d.referral)],
     ];
-    if (services.length > 0) {
-      rows.push(['Interested In', services.map((s) => SERVICE_LABELS[s]).join(', ')]);
-    }
     // Escape HTML-significant characters so nothing in the submission can
     // inject markup into the HTML email.
-    const safeMessage = validator.escape(message).replace(/\n/g, '<br>');
+    const safeMessage = validator.escape(d.message).replace(/\n/g, '<br>');
 
     // --- 5. Send email via Resend -------------------------------------------
     // Created per request so a missing env var fails with a logged error
@@ -167,14 +226,13 @@ app.post('/api/contact', async (req, res) => {
     const { error } = await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL, // must be on a verified domain (or onboarding@resend.dev)
       to: process.env.CONTACT_TO_EMAIL,
-      replyTo: email, // safe: validated by Zod's .email(), and CR/LF-checked above
-      subject: `New inquiry from ${name}`,
+      replyTo: d.email, // safe: validated by Zod's .email(), and CR/LF-checked above
+      subject: `New project inquiry from ${d.name}`,
       html: renderContactEmail(
-        rows.map(([label, value]) => [label, validator.escape(value)]),
-        safeMessage,
-        { name: validator.escape(name), email: validator.escape(email) }
+        rows.map(([l, value]) => [l, validator.escape(value)]),
+        safeMessage
       ),
-      text: `${rows.map(([label, value]) => `${label}: ${value}`).join('\n')}\n\nMessage:\n${message}`,
+      text: `${rows.map(([l, value]) => (l ? `${l}: ${value}` : `\n${value.toUpperCase()}`)).join('\n')}\n\nAbout their business:\n${d.message}`,
     });
 
     if (error) {

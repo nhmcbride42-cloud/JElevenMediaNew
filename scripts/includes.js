@@ -1,6 +1,6 @@
 // scripts/includes.js
 //
-// Stamps the shared partials (nav, footer, service links, contact modal) into
+// Stamps the shared partials (nav, footer, service links) into
 // every page at build time, between <!-- include:name --> and
 // <!-- /include:name --> markers. Pages without a marker are left alone. The
 // partials stay the single source of truth, while each page ships with its
@@ -17,7 +17,6 @@ const partials = {
   nav: 'partials/nav.html',
   footer: 'partials/footer.html',
   services: 'partials/services.html',
-  'contact-modal': 'partials/contact-modal.html',
 };
 
 const pages = fs.readdirSync(root).filter((f) => f.endsWith('.html'));

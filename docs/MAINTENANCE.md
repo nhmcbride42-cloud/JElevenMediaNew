@@ -34,7 +34,7 @@ Everything needed to run, edit, troubleshoot and extend jelevenmedia.com.
 | Rebuild CSS and shared pieces before committing | `npm run build` |
 | Publish a change | Commit → push to `main` → Vercel deploys automatically |
 | Change a price or package | Edit the matching service page's `.html` file (§7) |
-| Change the nav, footer, service links or "Get Started" pop-up | Edit the file in `partials/`, then `npm run build` |
+| Change the nav, footer or service links | Edit the file in `partials/`, then `npm run build` |
 | Change a color or font | `src/input.css` → `@theme` block, then `npm run build` |
 | Change who gets form emails | Vercel → Settings → Environment Variables → `CONTACT_TO_EMAIL` → redeploy |
 
@@ -42,7 +42,7 @@ Everything needed to run, edit, troubleshoot and extend jelevenmedia.com.
 - Always run `npm run build` before committing, and commit the rebuilt `dist/output.css`.
 - Never put inline `style="…"` or inline `<script>` code in a page: the security policy blocks them (§12). Use Tailwind classes and files in `/js`.
 - Never commit `.env` or API keys.
-- Edit the nav, footer, service links and pop-up in `partials/`, never inside individual pages.
+- Edit the nav, footer and service links in `partials/`, never inside individual pages.
 
 ---
 
@@ -99,18 +99,18 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 ├── care-plans.html             Hosting + maintenance care plans
 ├── add-ons.html                Google Business Profile, extra pages/products, integrations
 ├── social-media.html           Social media packages
+├── contact.html                Contact page (three-step project form)
 ├── 404.html                    "Page not found"
 ├── partials/
 │   ├── nav.html                Navigation (source of truth)
 │   ├── footer.html             Footer (source of truth)
-│   ├── services.html           Row of service links under each service page's title
-│   └── contact-modal.html      "Get Started" pop-up form on service pages
+│   └── services.html           Row of service links under each service page's title
 ├── src/input.css               Tailwind source: theme, fonts, component classes
 ├── dist/output.css             Compiled CSS (generated; commit it, don't edit)
 ├── js/
 │   ├── includes.js             Mobile menu, services dropdown, current-page highlight, footer year
 │   ├── home.js                 Homepage section snapping, reveal animations
-│   └── contact.js              Both contact forms + the pop-up
+│   └── contact.js              Contact page form: steps, checks, submit
 ├── api/                        Serverless functions (run on Vercel)
 │   ├── csrf-token.js           Issues form security tokens
 │   └── contact.js              Contact form handler
@@ -136,6 +136,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 | `/care-plans` | `care-plans.html` | ✓ |
 | `/add-ons` | `add-ons.html` | ✓ |
 | `/social-media` | `social-media.html` | ✓ |
+| `/contact` | `contact.html` | ✓ |
 | any unknown URL | `404.html` | — |
 
 **Redirects from the old site** (`vercel.json` → `redirects`) keep old links and search results working:
@@ -158,10 +159,9 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
     <!-- include:services --> … <!-- /include:services -->   (service links row)
     What We Do / Why It Matters
     package groups (includes box, package cards, notes)
-    "Get Started Today →" (opens the pop-up)
+    "Get Started Today →" (links to /contact)
   </main>
   <!-- include:footer --> … <!-- /include:footer -->
-  <!-- include:contact-modal --> … <!-- /include:contact-modal -->
 </body>
 ```
 
@@ -178,7 +178,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 
 ## 6. Shared pieces (partials)
 
-`npm run build` runs `scripts/includes.js`, which copies each file in `partials/` into every page between its `<!-- include:name -->` and `<!-- /include:name -->` markers. Pages without a marker are skipped (for example, only service pages have the pop-up).
+`npm run build` runs `scripts/includes.js`, which copies each file in `partials/` into every page between its `<!-- include:name -->` and `<!-- /include:name -->` markers. Pages without a marker are skipped (for example, only service pages have the service links row).
 
 - Edit the partial → `npm run build` → commit. Every page updates.
 - **Don't** edit these pieces inside a page; your change is overwritten on the next build.
@@ -257,7 +257,8 @@ Repeated styles are defined once as `@utility` blocks in `src/input.css`:
 ## 9. Homepage behavior
 
 - **Full-screen sections (desktop).** `<main>` is the scroll container; each section has `data-full-section` and fills the screen on desktop. Scrolling is normal (no snapping). Below 768px wide, sections take only the height they need.
-- **Section order:** Hero, Our Services, Our Work, Our Story, Contact. To reorder, move the whole `<section>` block in `index.html` and match the link order in `partials/nav.html` (desktop and mobile menus).
+- **Section order:** Hero, Our Services, Our Work, Our Story, Get started (the "Getting started is simple" panel with the Start your project and Call buttons). To reorder, move the whole `<section>` block in `index.html` and match the link order in `partials/nav.html` (desktop and mobile menus).
+- **Our Services tabs.** Each service is a tab (`role="tab"`) with a matching panel (`role="tabpanel"`) holding its description, what's included and prices. `js/home.js` shows one panel at a time and handles the arrow keys. Prices in the panels must match the service pages (§7).
 - **Reveal animations.** Sections with `data-reveal-group` reveal their `data-reveal` children one by one; `data-delay` is the wait in milliseconds. `data-reveal-group="repeat"` (Our Work) replays each time it scrolls into view. The hidden/visible states are the `js:` and `revealed:` classes, so without JavaScript everything simply shows.
 - **Scroll position** is remembered when you leave the homepage and come back.
 - People who turn on "reduce motion" in their device settings skip the animations.
@@ -313,11 +314,21 @@ Vercel Web Analytics (`/_vercel/insights/script.js`) is same-origin and works as
 
 ---
 
-## 13. Contact forms and email
+## 13. Contact form and email
 
-Two forms post to `/api/contact`:
-- **Homepage** "Contact Us" section: name, email, phone (optional), message.
-- **Service pages** "Get Started Today →" pop-up: name, email, services checkboxes, message. The button links to `/#contact`, so without JavaScript it goes to the homepage form.
+The only form is on the **Contact page** (`/contact`). Every "Start your project", "Get Started Today" and "Contact Us" link goes there.
+
+**Files:** `contact.html` (form), `js/contact.js` (steps, checks, submit), `api/contact.js` (server), `lib/contact-email.js` (email layout).
+
+**Steps.** The form has three `<fieldset data-step>` blocks: About you, Your project, The details. `js/contact.js` shows one at a time with a progress bar; **Next** checks that step's required fields first. Without JavaScript all three show and the form still works. Only **name**, **email** and **"Tell us about your business and goals"** are required.
+
+**Tap-to-select options** are real radio buttons/checkboxes styled as tags:
+
+```html
+<label class="chip"><input type="radio" name="timeline" value="asap" class="peer sr-only"><span class="chip-face">As soon as possible</span></label>
+```
+
+Checkbox groups (like "What do you need?") are sent as lists.
 
 Protections (same as the Rogue K9 site):
 
@@ -326,15 +337,15 @@ Protections (same as the Rogue K9 site):
 | CSRF token | Page fetches a token from `/api/csrf-token` (also set as a secure cookie); the server rejects mismatches |
 | Honeypot | Hidden `hp_field` input; bots fill it and the server pretends success without sending |
 | Rate limit | 5 submissions per 15 minutes per connection |
-| Server validation | Every field checked with Zod; errors come back as `fieldErrors` and show under each field |
+| Server validation | Every field checked with Zod, including that each option is one of the allowed values; errors come back as `fieldErrors`, show under each field, and the form jumps to that step |
 | Escaping | All answers are HTML-escaped before going into the email |
 | Allowed origin | Only `ALLOWED_ORIGIN` may call the API from a browser |
 
-**Add a field:** add the input (with a `name`) and a `<p data-error="fieldname" class="form-error hidden" role="alert"></p>` to the form; add it to `ContactSchema` in `api/contact.js`; add a row to `rows` in the same file. `js/contact.js` needs no changes.
+**Change an option** (e.g. add a budget range): add it in `contact.html`, then add the same `value` and its email wording to `LABELS` in `api/contact.js`. The server rejects any value not listed there.
 
-**Email look:** `lib/contact-email.js`. It uses tables and inline styles on purpose; email apps ignore modern CSS.
+**Add a field:** add the input (with a `name`) and a `<p data-error="fieldname" class="form-error hidden" role="alert"></p>` to the right step; add it to `ContactSchema` in `api/contact.js` (and `LABELS` if it has fixed options); add a row to `rows` in the same file. `js/contact.js` needs no changes.
 
-**Sending:** From = `CONTACT_FROM_EMAIL`, To = `CONTACT_TO_EMAIL`, Reply-To = the visitor, so pressing Reply answers them directly. The From address must be on a domain verified in Resend (Resend → Domains).
+**Email:** `lib/contact-email.js` is a plain layout: one row per answer under three headings, then their message. It uses tables and inline styles on purpose; email apps ignore modern CSS. Subject: "New project inquiry from (name)". From = `CONTACT_FROM_EMAIL`, To = `CONTACT_TO_EMAIL`, Reply-To = the visitor, so pressing Reply answers them directly. The From address must be on a domain verified in Resend (Resend → Domains); until then use `onboarding@resend.dev`, which only delivers to the Resend account owner's own email.
 
 ---
 
@@ -346,7 +357,7 @@ Set in Vercel → project → **Settings** → **Environment Variables**, then *
 |---|---|---|
 | `RESEND_API_KEY` | `re_…` | Lets the site send through Resend. Secret |
 | `CONTACT_FROM_EMAIL` | `J Eleven Media <contact@jelevenmedia.com>` | Sender; must be on a verified domain |
-| `CONTACT_TO_EMAIL` | `you@example.com` | Inbox for form submissions |
+| `CONTACT_TO_EMAIL` | `jeleven.hayden@gmail.com` | Inbox for form submissions |
 | `ALLOWED_ORIGIN` | `https://www.jelevenmedia.com` | The site's exact address (with or without `www`, matching what visitors see). Defaults to `https://www.jelevenmedia.com` |
 
 ---
@@ -356,7 +367,7 @@ Set in Vercel → project → **Settings** → **Environment Variables**, then *
 1. Vercel project: set **Framework Preset** to *Other* and leave the build command empty (the old site was Next.js).
 2. Set the four environment variables (§14) and redeploy.
 3. Enable **Web Analytics** in the Vercel project if you want visitor stats.
-4. Smoke test on the live domain: every page on phone and desktop; submit the homepage form and the pop-up; confirm the email arrives and Reply goes to the visitor.
+4. Smoke test on the live domain: every page on phone and desktop; submit the Contact page form; confirm the email arrives and Reply goes to the visitor.
 5. Visit an old URL (e.g. `/services/hosting`) and confirm it redirects.
 6. Google Search Console → resubmit `https://www.jelevenmedia.com/sitemap.xml`.
 7. Paste the URL into a text or social post to check `og-image.jpg` shows.

@@ -1,6 +1,6 @@
-// Homepage behavior: remembering the scroll position and the staggered
-// reveal animations. Without JavaScript every section still shows and
-// scrolls normally.
+// Homepage behavior: remembering the scroll position, the staggered reveal
+// animations and the Our Services tabs. Without JavaScript every section
+// still shows and scrolls normally.
 
 document.documentElement.classList.add('js');
 
@@ -47,4 +47,37 @@ document.querySelectorAll('[data-reveal-group]').forEach((group) => {
   }, { threshold: repeat ? 0.3 : 0.05 });
 
   io.observe(group);
+});
+
+// ── Service tabs ──
+// One panel shows at a time. Arrow keys move between tabs (WAI-ARIA tabs
+// pattern). Without JavaScript every panel shows, one after another.
+document.querySelectorAll('[data-tabs]').forEach((wrap) => {
+  const tabs = Array.from(wrap.querySelectorAll('[role="tab"]'));
+  const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+
+  const select = (i, focus) => {
+    tabs.forEach((t, n) => {
+      t.setAttribute('aria-selected', String(n === i));
+      t.tabIndex = n === i ? 0 : -1;
+      panels[n].hidden = n !== i;
+    });
+    if (focus) tabs[i].focus();
+  };
+
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(i, false));
+    t.addEventListener('keydown', (e) => {
+      const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+      if (e.key in keys) {
+        e.preventDefault();
+        select((i + keys[e.key] + tabs.length) % tabs.length, true);
+      } else if (e.key === 'Home' || e.key === 'End') {
+        e.preventDefault();
+        select(e.key === 'Home' ? 0 : tabs.length - 1, true);
+      }
+    });
+  });
+
+  select(0, false);
 });

@@ -294,24 +294,43 @@
   @apply text-clay underline decoration-clay/40 underline-offset-2 transition-colors hover:decoration-clay focus-ring;
 }
 
-/* ── Forms (on cocoa backgrounds) ── */
+/* ── Forms (contact page) ── */
 
 @utility form-label {
-  @apply font-playfair text-[clamp(0.78rem,0.9vw,0.95rem)] font-semibold tracking-[0.02em] text-paper;
+  @apply font-playfair text-[0.9rem] font-semibold tracking-[0.02em] text-ink;
+}
+
+/* "(optional)" and short help text next to a label */
+@utility form-hint {
+  @apply font-cormorant text-[1.05rem] font-normal italic text-ink-faint;
 }
 
 @utility form-input {
-  @apply w-full rounded-[10px] border border-paper/25 bg-paper/[0.12] px-[0.9rem] py-[0.6rem] font-playfair text-[clamp(0.88rem,1vw,1.05rem)] text-paper outline-none transition-[border-color] duration-200 placeholder:italic placeholder:text-paper/45 focus:border-paper/70 aria-[invalid=true]:border-[#f3b7a0];
+  @apply w-full rounded-[10px] border border-line-2 bg-white px-4 py-2.5 font-playfair text-[0.95rem] text-ink outline-none transition-[border-color] duration-200 placeholder:italic placeholder:text-ink-faint focus:border-clay aria-[invalid=true]:border-[#b4532e];
 }
 
 @utility form-error {
-  @apply font-playfair text-[0.85rem] italic text-[#f3c9b8];
+  @apply font-playfair text-[0.85rem] italic text-[#b4532e];
 }
 
 @utility form-status {
-  @apply font-playfair text-[0.95rem] italic text-paper;
+  @apply font-playfair text-[0.95rem] italic text-[#b4532e];
 }
 
-@utility form-submit {
-  @apply cursor-pointer rounded-[50px] border-none bg-paper px-8 py-3 font-playfair text-[clamp(0.9rem,1.05vw,1.1rem)] font-semibold text-cocoa transition-[opacity,letter-spacing] duration-300 enabled:hover:tracking-[0.02em] enabled:hover:opacity-85 disabled:cursor-default disabled:opacity-50 focus-ring-light;
+/* Tap-to-select options: <label class="chip"><input class="peer sr-only"><span class="chip-face">…</span></label> */
+@utility chip {
+  @apply relative inline-flex cursor-pointer;
+}
+
+@utility chip-face {
+  @apply rounded-full border border-line-2 bg-white px-4 py-1.5 font-cormorant text-[1.1rem] text-ink transition-colors duration-200 select-none hover:border-clay peer-checked:border-clay peer-checked:bg-clay peer-checked:text-paper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-clay;
+}
+
+/* Buttons */
+@utility btn-dark {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-cocoa bg-cocoa px-7 py-3 font-playfair text-[1rem] font-semibold text-paper no-underline transition-opacity duration-200 hover:opacity-90 disabled:cursor-default disabled:opacity-50 focus-ring;
+}
+
+@utility btn-outline {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-line-2 bg-transparent px-7 py-3 font-playfair text-[1rem] font-semibold text-ink no-underline transition-colors duration-200 hover:border-cocoa focus-ring;
 }

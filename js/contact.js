@@ -1,9 +1,17 @@
-// Contact forms (homepage section and the "Get Started" pop-up on service
-// pages). Both post to /api/contact. The form needs this script to obtain a
-// CSRF token before it can be submitted.
+// Contact page form (/contact). Shows one step at a time when JavaScript is
+// on (without it, every step shows at once and the form still submits).
+// Posts to /api/contact, which needs a CSRF token fetched first.
 (function () {
-  const forms = document.querySelectorAll('[data-contact-form]');
-  if (forms.length === 0) return;
+  document.documentElement.classList.add('js');
+
+  const form = document.querySelector('[data-contact-form]');
+  if (!form) return;
+
+  const csrfInput = form.querySelector('[data-csrf]');
+  const statusEl = form.querySelector('[data-form-status]');
+  const submitBtn = form.querySelector('[type="submit"]');
+  const submitLabel = submitBtn.innerHTML;
+  const success = document.querySelector('[data-form-success]');
 
   // ── CSRF token (double-submit cookie pattern) ──
   // The server also sets an HttpOnly cookie with the same token; on submit it
@@ -14,16 +22,14 @@
       const res = await fetch('/api/csrf-token', { method: 'GET', credentials: 'same-origin' });
       if (!res.ok) throw new Error('CSRF token request failed');
       const data = await res.json();
-      if (data.csrfToken) {
-        document.querySelectorAll('[data-csrf]').forEach((input) => { input.value = data.csrfToken; });
-      }
+      if (data.csrfToken && csrfInput) csrfInput.value = data.csrfToken;
     } catch (err) {
       console.error('Could not load CSRF token:', err);
     }
   }
 
   // ── Phone formatting: (XXX) XXX-XXXX while typing ──
-  document.querySelectorAll('input[name="phone"]').forEach((input) => {
+  form.querySelectorAll('input[name="phone"]').forEach((input) => {
     input.addEventListener('input', () => {
       const digits = input.value.replace(/\D/g, '').slice(0, 10);
       let formatted = digits;
@@ -34,146 +40,158 @@
     });
   });
 
-  forms.forEach((form) => {
-    const submitBtn = form.querySelector('[type="submit"]');
-    const submitLabel = submitBtn.innerHTML;
-    const statusEl = form.querySelector('[data-form-status]');
-    const csrfInput = form.querySelector('[data-csrf]');
+  // ── Steps ──
+  const steps = Array.from(form.querySelectorAll('[data-step]'));
+  const progress = form.querySelector('[data-progress]');
+  const progressBar = form.querySelector('[data-progress-bar]');
+  const stepLabel = form.querySelector('[data-step-label]');
+  let current = 0;
 
-    function setStatus(message) {
-      if (!statusEl) return;
-      statusEl.textContent = message;
-      statusEl.classList.toggle('hidden', !message);
+  function showStep(i, focus) {
+    current = i;
+    steps.forEach((step, n) => { step.hidden = n !== i; });
+    if (progressBar) progressBar.style.width = `${((i + 1) / steps.length) * 100}%`;
+    if (stepLabel) stepLabel.textContent = `Step ${i + 1} of ${steps.length} · ${steps[i].dataset.stepName}`;
+    if (focus) {
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const first = steps[i].querySelector('input:not([type="hidden"]), select, textarea');
+      if (first) first.focus({ preventScroll: true });
     }
+  }
 
-    function clearFieldErrors() {
-      form.querySelectorAll('[data-error]').forEach((el) => {
-        el.textContent = '';
-        el.classList.add('hidden');
-        const input = form.querySelector(`[name="${el.dataset.error}"]`);
-        if (input) input.removeAttribute('aria-invalid');
-      });
-    }
+  if (steps.length > 1) {
+    if (progress) progress.hidden = false;
+    form.querySelectorAll('[data-next], [data-back]').forEach((btn) => { btn.hidden = false; });
+    showStep(0, false);
 
-    // errors: { fieldName: 'message', ... } returned from the Zod-validated API
-    function showFieldErrors(errors) {
-      Object.entries(errors || {}).forEach(([field, message]) => {
-        const el = form.querySelector(`[data-error="${field}"]`);
-        if (el) {
-          el.textContent = message;
-          el.classList.remove('hidden');
-        }
-        const input = form.querySelector(`[name="${field}"]`);
-        if (input) input.setAttribute('aria-invalid', 'true');
-      });
-    }
-
-    // Quick browser-side check of required fields so people get instant
-    // feedback. The server re-checks everything.
-    function checkRequired() {
-      const errors = {};
-      form.querySelectorAll('[required]').forEach((input) => {
-        if (!input.value.trim()) errors[input.name] = 'This field is required.';
-        else if (input.type === 'email' && !input.checkValidity()) errors[input.name] = 'Enter a valid email address.';
-      });
-      return errors;
-    }
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      clearFieldErrors();
-      setStatus('');
-
-      const localErrors = checkRequired();
-      if (Object.keys(localErrors).length > 0) {
-        showFieldErrors(localErrors);
-        return;
-      }
-
-      if (!csrfInput || !csrfInput.value) {
-        setStatus('Please refresh the page before submitting the form.');
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-
-      const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
-      payload.services = formData.getAll('services');
-
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          credentials: 'same-origin',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': csrfInput.value,
-          },
-          body: JSON.stringify(payload),
-        });
-        const data = await res.json().catch(() => ({}));
-
-        if (res.status === 429) {
-          setStatus('Too many requests. Please wait a moment and try again.');
-        } else if (!res.ok) {
-          if (data.fieldErrors) {
-            showFieldErrors(data.fieldErrors);
-            setStatus('Please correct the highlighted fields.');
-          } else {
-            setStatus('Something went wrong sending your message. Please try again, or email us at jelevenmedia@gmail.com.');
-          }
-        } else {
-          form.reset();
-          setStatus('Message sent! We’ll be in touch soon.');
-          submitBtn.textContent = 'Message sent!';
-          loadCsrfToken(); // fresh token for a possible second message
-          setTimeout(() => {
-            submitBtn.innerHTML = submitLabel;
-            submitBtn.disabled = false;
-          }, 4000);
+    form.addEventListener('click', (e) => {
+      if (e.target.closest('[data-next]')) {
+        clearFieldErrors();
+        setStatus('');
+        const errors = checkRequired(steps[current]);
+        if (Object.keys(errors).length > 0) {
+          showFieldErrors(errors);
           return;
         }
-      } catch (err) {
-        console.error('Contact form submission failed:', err);
-        setStatus('Something went wrong sending your message. Please try again, or email us at jelevenmedia@gmail.com.');
+        showStep(current + 1, true);
+      } else if (e.target.closest('[data-back]')) {
+        showStep(current - 1, true);
       }
-      submitBtn.innerHTML = submitLabel;
-      submitBtn.disabled = false;
-    });
-  });
-
-  // ── "Get Started" pop-up ──
-  // Links marked data-contact-modal point at /#contact, so they still work
-  // without JavaScript; with it, they open the pop-up on the current page.
-  const modal = document.getElementById('contact-modal');
-  if (modal) {
-    let lastFocus = null;
-
-    const close = () => {
-      modal.hidden = true;
-      document.body.classList.remove('overflow-hidden');
-      if (lastFocus) lastFocus.focus();
-    };
-
-    document.querySelectorAll('[data-contact-modal]').forEach((trigger) => {
-      trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        lastFocus = trigger;
-        modal.hidden = false;
-        document.body.classList.add('overflow-hidden');
-        const first = modal.querySelector('input:not([type="hidden"]):not([tabindex="-1"])');
-        if (first) first.focus();
-      });
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal || e.target.closest('[data-modal-close]')) close();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.hidden) close();
     });
   }
+
+  // Jump to the step holding the first field that has an error.
+  function goToError(errors) {
+    const field = Object.keys(errors)[0];
+    const input = field && form.querySelector(`[name="${field}"]`);
+    const step = input && input.closest('[data-step]');
+    if (step && steps.length > 1) showStep(steps.indexOf(step), true);
+  }
+
+  // ── Errors and status ──
+  function setStatus(message) {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.classList.toggle('hidden', !message);
+  }
+
+  function clearFieldErrors() {
+    form.querySelectorAll('[data-error]').forEach((el) => {
+      el.textContent = '';
+      el.classList.add('hidden');
+      form.querySelectorAll(`[name="${el.dataset.error}"]`).forEach((input) => input.removeAttribute('aria-invalid'));
+    });
+  }
+
+  // errors: { fieldName: 'message', ... } from checkRequired or the Zod-validated API
+  function showFieldErrors(errors) {
+    Object.entries(errors || {}).forEach(([field, message]) => {
+      const el = form.querySelector(`[data-error="${field}"]`);
+      if (el) {
+        el.textContent = message;
+        el.classList.remove('hidden');
+      }
+      form.querySelectorAll(`[name="${field}"]`).forEach((input) => input.setAttribute('aria-invalid', 'true'));
+    });
+  }
+
+  // Quick browser-side check of required fields so people get instant
+  // feedback. The server re-checks everything.
+  function checkRequired(scope) {
+    const errors = {};
+    scope.querySelectorAll('[required]').forEach((input) => {
+      if (!input.value.trim()) errors[input.name] = 'This field is required.';
+      else if (input.type === 'email' && !input.checkValidity()) errors[input.name] = 'Enter a valid email address.';
+    });
+    return errors;
+  }
+
+  // Checkbox groups are sent as lists; everything else as text.
+  function collect() {
+    const data = new FormData(form);
+    const payload = {};
+    const lists = new Set(Array.from(form.querySelectorAll('input[type="checkbox"]')).map((c) => c.name));
+    for (const key of new Set(data.keys())) {
+      payload[key] = lists.has(key) ? data.getAll(key) : data.get(key);
+    }
+    lists.forEach((key) => { if (!payload[key]) payload[key] = []; });
+    return payload;
+  }
+
+  // ── Submit ──
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    clearFieldErrors();
+    setStatus('');
+
+    const localErrors = checkRequired(form);
+    if (Object.keys(localErrors).length > 0) {
+      showFieldErrors(localErrors);
+      goToError(localErrors);
+      return;
+    }
+
+    if (!csrfInput || !csrfInput.value) {
+      setStatus('Please refresh the page before submitting the form.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfInput.value },
+        body: JSON.stringify(collect()),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.focus();
+        }
+        return;
+      }
+      if (res.status === 429) {
+        setStatus('Too many requests. Please wait a moment and try again.');
+      } else if (data.fieldErrors) {
+        showFieldErrors(data.fieldErrors);
+        goToError(data.fieldErrors);
+        setStatus('Please correct the highlighted fields.');
+      } else {
+        setStatus('Something went wrong sending your details. Please try again, or call (865) 684-0526.');
+      }
+    } catch (err) {
+      console.error('Contact form submission failed:', err);
+      setStatus('Something went wrong sending your details. Please try again, or call (865) 684-0526.');
+    }
+    submitBtn.innerHTML = submitLabel;
+    submitBtn.disabled = false;
+  });
 
   loadCsrfToken();
 })();
