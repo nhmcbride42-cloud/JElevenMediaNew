@@ -271,7 +271,7 @@ Repeated styles are defined once as `@utility` blocks in `src/input.css`:
 | `logo-480.webp` | Nav logo |
 | `logo-1000.webp`, `logo-2000.webp` | Homepage hero logo |
 | `family-photo.webp` | Our Story |
-| `misty-tidwell-mobile.webp`, `misty-tidwell-desktop.webp` | Our Work case study |
+| `work-<project>-desktop.webp` (1200×750), `work-<project>-mobile.webp` (360×779) | Our Work cards: a desktop and a phone screenshot per project |
 | `og-image.jpg` (1200×630) | Preview when the site is shared |
 | `favicon.ico`, `icon-192.png`, `apple-touch-icon.png` | Browser tab and phone home-screen icons |
 
