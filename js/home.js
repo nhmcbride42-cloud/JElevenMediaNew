@@ -1,6 +1,6 @@
-// Homepage behavior: full-screen section snapping on desktop and the
-// staggered reveal animations. Without JavaScript every section still shows
-// and scrolls normally.
+// Homepage behavior: remembering the scroll position and the staggered
+// reveal animations. Without JavaScript every section still shows and
+// scrolls normally.
 
 document.documentElement.classList.add('js');
 
@@ -21,44 +21,6 @@ if (scroller && !window.location.hash) {
   } catch (err) {
     // Storage blocked (private mode); scroll position simply isn't restored.
   }
-}
-
-// ── Mouse wheel jumps one section at a time ──
-// Trackpads produce many small fractional-pixel events; mouse wheels produce
-// a single large discrete event. Only mouse-wheel scrolls (large |deltaY| or
-// line/page deltaMode) are turned into section jumps; CSS snap handles the rest.
-if (scroller) {
-  let locked = false;
-  scroller.addEventListener('wheel', (e) => {
-    if (window.innerWidth < 768) return;
-    const isMouseWheel =
-      e.deltaMode !== 0 || (Number.isInteger(e.deltaY) && Math.abs(e.deltaY) >= 40);
-    if (!isMouseWheel) return;
-
-    e.preventDefault();
-    if (locked) return;
-    locked = true;
-    setTimeout(() => { locked = false; }, 900);
-
-    const sections = Array.from(scroller.querySelectorAll('[data-snap-section], footer'));
-    if (sections.length === 0) return;
-
-    // Current section = the one whose top is closest to the scroll position.
-    const scrollTop = scroller.scrollTop;
-    let currentIndex = 0;
-    let closestDist = Infinity;
-    sections.forEach((s, i) => {
-      const dist = Math.abs(s.offsetTop - scrollTop);
-      if (dist < closestDist) {
-        closestDist = dist;
-        currentIndex = i;
-      }
-    });
-
-    const direction = e.deltaY > 0 ? 1 : -1;
-    const targetIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction));
-    sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
-  }, { passive: false });
 }
 
 // ── Staggered reveals ──

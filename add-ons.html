@@ -155,7 +155,6 @@
         </a>
 
         <ul class="hidden list-none justify-center gap-[38px] self-stretch lg:flex">
-            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
             <li class="group relative flex items-center" data-dropdown>
                 <button type="button" aria-expanded="false" aria-controls="services-menu" class="nav-link inline-flex items-center gap-1.5">
                     Our Services <span aria-hidden="true" class="text-[0.6rem] transition-transform duration-200 group-[.is-open]:rotate-180">&#9662;</span>
@@ -169,6 +168,7 @@
                 </ul>
             </li>
             <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
+            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
             <li class="flex items-center"><a href="/#contact" class="nav-link">Contact Us</a></li>
         </ul>
 
@@ -180,8 +180,7 @@
     </div>
 
     <div id="mobile-menu" inert class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] md:top-[var(--nav-h)] lg:hidden">
-        <a href="/#story-reveal" class="mobile-nav-link border-t-0">Our Story</a>
-        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link flex cursor-pointer items-center justify-between">
+        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link border-t-0 flex cursor-pointer items-center justify-between">
             Our Services <span aria-hidden="true" class="text-[0.6rem]">&#9662;</span>
         </button>
         <div id="mobile-services" class="hidden flex-col bg-ink/[0.04]">
@@ -192,6 +191,7 @@
             <a href="/social-media" class="mobile-subnav-link">Social Media</a>
         </div>
         <a href="/#work" class="mobile-nav-link">Our Work</a>
+        <a href="/#story-reveal" class="mobile-nav-link">Our Story</a>
         <a href="/#contact" class="mobile-nav-link">Contact Us</a>
     </div>
 </nav>
@@ -235,16 +235,17 @@
         <!-- Packages and pricing -->
         <div class="flex flex-col gap-14 border-t border-line-2 px-6 py-10 md:px-[clamp(1.5rem,10vw,12rem)] md:py-[clamp(2.5rem,6vh,4.5rem)]">
 
-            <section aria-labelledby="add-on-options" class="flex flex-col gap-6">
-                <div>
+            <section aria-labelledby="add-on-options" class="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
+                <div class="text-center">
                     <h2 id="add-on-options" class="group-heading">Add-Ons</h2>
-                    <p class="group-intro">Mix into any website or store package.</p>
+                    <p class="group-intro mx-auto">Mix into any website or store package.</p>
                 </div>
 
-                <div class="package-grid lg:grid-cols-2">
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Google Business Profile</h3>
+                <div class="package-grid sm:grid-cols-2 lg:grid-cols-4">
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Google Business Profile</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$350</p>
                             <p class="package-price-note">one-time</p>
                         </div>
@@ -255,32 +256,39 @@
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Write your business description and add optimized photos</li>
                         </ul>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Extra Pages</h3>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Extra Pages</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$200</p>
                             <p class="package-price-note">per page</p>
                         </div>
                         <p class="package-tagline">Add pages beyond your package. Once you need 2 or 3 more, upgrading to the next package is usually the better value.</p>
+                        <div></div>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Extra Products</h3>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Extra Products</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$5 &ndash; $15</p>
                             <p class="package-price-note">per product</p>
                         </div>
                         <p class="package-tagline">Products loaded beyond your store package limit: $5 for simple products, $15 for products with options like size and color.</p>
+                        <div></div>
                     </article>
-                    <article class="package-card">
-                        <div class="flex flex-col gap-1">
-                            <h3 class="package-name">Connecting Your Tools</h3>
-                            <p class="package-price"><span class="font-cormorant text-[1.1rem] italic text-ink-faint">Starting at</span> $300</p>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Connecting Your Tools</h3>
+                        <div>
+                            <p class="package-price-label">Starting at</p>
+                            <p class="package-price">$300</p>
+                            <p class="package-price-note" aria-hidden="true">&nbsp;</p>
                         </div>
                         <p class="package-tagline">Link your website to the software you already use, such as your booking calendar or customer management system (CRM).</p>
+                        <div></div>
                     </article>
                 </div>
 
-                <p class="fine-print">See all <a href="/web-design" class="inline-link">website packages</a> and <a href="/online-stores" class="inline-link">online store packages</a>.</p>
+                <p class="fine-print mx-auto text-center">See all <a href="/web-design" class="inline-link">website packages</a> and <a href="/online-stores" class="inline-link">online store packages</a>.</p>
             </section>
         </div>
 
@@ -293,7 +301,7 @@
     </main>
 
     <!-- include:footer -->
-<footer class="snap-end bg-ink px-[5vw] pb-8 pt-10 text-paper md:px-[6vw]">
+<footer class="bg-ink px-[5vw] pb-8 pt-10 text-paper md:px-[6vw]">
     <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
 
         <div class="flex flex-col items-center gap-2 md:items-start">
