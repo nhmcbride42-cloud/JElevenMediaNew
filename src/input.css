@@ -334,3 +334,12 @@
 @utility btn-outline {
   @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-line-2 bg-transparent px-7 py-3 font-playfair text-[1rem] font-semibold text-ink no-underline transition-colors duration-200 hover:border-cocoa focus-ring;
 }
+
+/* Buttons on brown (cocoa) backgrounds */
+@utility btn-light {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-paper bg-paper px-7 py-3 font-playfair text-[1rem] font-semibold text-cocoa no-underline transition-opacity duration-200 hover:opacity-90 focus-ring-light;
+}
+
+@utility btn-outline-light {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border border-paper/40 bg-transparent px-7 py-3 font-playfair text-[1rem] font-semibold text-paper no-underline transition-colors duration-200 hover:border-paper focus-ring-light;
+}
