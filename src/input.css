@@ -99,6 +99,11 @@
   }
 
   body {
+    /* The nav is position: fixed (so iOS Safari paints the status bar area
+       in the nav's color instead of showing the page through it), so the
+       page starts below it: nav height + its 1px border, plus the notch /
+       status bar area on phones. */
+    padding-top: calc(var(--nav-h) + 1px + env(safe-area-inset-top));
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-hanken);
