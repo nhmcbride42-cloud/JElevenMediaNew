@@ -213,7 +213,8 @@
 
         <!-- ── Our Services ── -->
         <!-- Tabs: js/home.js shows one panel at a time; without JavaScript every panel shows. -->
-        <section id="services" data-full-section aria-labelledby="services-heading" class="flex flex-col overflow-visible px-[5vw] pb-10 md:h-full md:overflow-hidden md:px-[6vw] md:pb-0">
+        <!-- Services and Our Story sit on white rounded panels so the homepage sections alternate (white, beige, white, beige). -->
+        <section id="services" data-full-section aria-labelledby="services-heading" class="flex flex-col overflow-hidden px-[5vw] pb-10 mx-3 my-4 rounded-[28px] bg-white md:mx-[2.5vw] md:my-7 md:h-[calc(100%-3.5rem)] md:rounded-[40px] md:px-[5vw] md:pb-0">
             <div class="flex shrink-0 items-center py-4 md:py-[1.2rem]">
                 <h2 id="services-heading" class="section-title font-cormorant text-cocoa">Our Services</h2>
             </div>
@@ -257,7 +258,7 @@
                     </button>
                 </div>
                 <div class="flex flex-col gap-6">
-                <div role="tabpanel" id="panel-web" aria-labelledby="tab-web" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                <div role="tabpanel" id="panel-web" aria-labelledby="tab-web" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
                     <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Web Design</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Every site is designed and coded by hand. No templates, no page builders. Just a website built around your brand that works on every phone and is easy for Google to find.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
@@ -288,7 +289,7 @@
                     </dl>
                     <a href="/web-design" class="cta-link self-start">See all website packages &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-stores" aria-labelledby="tab-stores" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                <div role="tabpanel" id="panel-stores" aria-labelledby="tab-stores" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
                     <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Online Stores</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Built on Shopify, the platform trusted by millions of businesses. Sell a handful of items right from your website, or launch a complete storefront.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
@@ -317,7 +318,7 @@
                     </dl>
                     <a href="/online-stores" class="cta-link self-start">See all store packages &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-care" aria-labelledby="tab-care" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                <div role="tabpanel" id="panel-care" aria-labelledby="tab-care" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
                     <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Care Plans</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Hosting, security, and updates handled for you, so your site stays fast and current and you never have to think about it.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
@@ -338,7 +339,7 @@
                     </dl>
                     <a href="/care-plans" class="cta-link self-start">See care plan details &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-addons" aria-labelledby="tab-addons" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                <div role="tabpanel" id="panel-addons" aria-labelledby="tab-addons" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
                     <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Add-Ons</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Mix into any website or store package to get exactly what your business needs, without jumping to a bigger package.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
@@ -366,7 +367,7 @@
                     </dl>
                     <a href="/add-ons" class="cta-link self-start">See all add-ons &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-social" aria-labelledby="tab-social" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-white p-6 outline-none md:p-11">
+                <div role="tabpanel" id="panel-social" aria-labelledby="tab-social" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
                     <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Social Media</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">A social media toolkit with strategy, content creation, and scheduling so you can hit the ground running and keep it going.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
@@ -470,7 +471,7 @@
         </section>
 
         <!-- ── Our Story ── -->
-        <section id="story-reveal" data-full-section data-reveal-group aria-labelledby="story-heading" class="flex flex-col overflow-visible md:h-full md:overflow-hidden">
+        <section id="story-reveal" data-full-section data-reveal-group aria-labelledby="story-heading" class="flex flex-col overflow-hidden mx-3 my-4 rounded-[28px] bg-white md:mx-[2.5vw] md:my-7 md:h-[calc(100%-3.5rem)] md:rounded-[40px]">
             <div class="flex shrink-0 items-center px-[5vw] py-4 md:px-[6vw] md:py-[1.4rem]">
                 <h2 id="story-heading" class="section-title font-playfair text-cocoa">Our Story</h2>
             </div>
