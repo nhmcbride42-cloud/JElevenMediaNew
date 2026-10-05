@@ -253,7 +253,8 @@ Repeated styles are defined once as `@utility` blocks in `src/input.css`:
 
 ## 9. Homepage behavior
 
-- **Full-screen sections (desktop).** `<main>` is the scroll container; each section has `data-snap-section` and fills the screen. CSS scroll snapping handles trackpads; `js/home.js` makes one mouse-wheel click move exactly one section. Below 768px wide the page scrolls normally.
+- **Full-screen sections (desktop).** `<main>` is the scroll container; each section has `data-full-section` and fills the screen on desktop. Scrolling is normal (no snapping). Below 768px wide, sections take only the height they need.
+- **Section order:** Hero, Our Services, Our Work, Our Story, Contact. To reorder, move the whole `<section>` block in `index.html` and match the link order in `partials/nav.html` (desktop and mobile menus).
 - **Reveal animations.** Sections with `data-reveal-group` reveal their `data-reveal` children one by one; `data-delay` is the wait in milliseconds. `data-reveal-group="repeat"` (Our Work) replays each time it scrolls into view. The hidden/visible states are the `js:` and `revealed:` classes, so without JavaScript everything simply shows.
 - **Scroll position** is remembered when you leave the homepage and come back.
 - People who turn on "reduce motion" in their device settings skip the animations.

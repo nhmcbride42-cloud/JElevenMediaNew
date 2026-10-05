@@ -149,7 +149,6 @@
         </a>
 
         <ul class="hidden list-none justify-center gap-[38px] self-stretch lg:flex">
-            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
             <li class="group relative flex items-center" data-dropdown>
                 <button type="button" aria-expanded="false" aria-controls="services-menu" class="nav-link inline-flex items-center gap-1.5">
                     Our Services <span aria-hidden="true" class="text-[0.6rem] transition-transform duration-200 group-[.is-open]:rotate-180">&#9662;</span>
@@ -163,6 +162,7 @@
                 </ul>
             </li>
             <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
+            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
             <li class="flex items-center"><a href="/#contact" class="nav-link">Contact Us</a></li>
         </ul>
 
@@ -174,8 +174,7 @@
     </div>
 
     <div id="mobile-menu" inert class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] md:top-[var(--nav-h)] lg:hidden">
-        <a href="/#story-reveal" class="mobile-nav-link border-t-0">Our Story</a>
-        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link flex cursor-pointer items-center justify-between">
+        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link border-t-0 flex cursor-pointer items-center justify-between">
             Our Services <span aria-hidden="true" class="text-[0.6rem]">&#9662;</span>
         </button>
         <div id="mobile-services" class="hidden flex-col bg-ink/[0.04]">
@@ -186,6 +185,7 @@
             <a href="/social-media" class="mobile-subnav-link">Social Media</a>
         </div>
         <a href="/#work" class="mobile-nav-link">Our Work</a>
+        <a href="/#story-reveal" class="mobile-nav-link">Our Story</a>
         <a href="/#contact" class="mobile-nav-link">Contact Us</a>
     </div>
 </nav>
@@ -322,7 +322,7 @@
     </main>
 
     <!-- include:footer -->
-<footer class="snap-end bg-ink px-[5vw] pb-8 pt-10 text-paper md:px-[6vw]">
+<footer class="bg-ink px-[5vw] pb-8 pt-10 text-paper md:px-[6vw]">
     <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
 
         <div class="flex flex-col items-center gap-2 md:items-start">

@@ -154,7 +154,6 @@
         </a>
 
         <ul class="hidden list-none justify-center gap-[38px] self-stretch lg:flex">
-            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
             <li class="group relative flex items-center" data-dropdown>
                 <button type="button" aria-expanded="false" aria-controls="services-menu" class="nav-link inline-flex items-center gap-1.5">
                     Our Services <span aria-hidden="true" class="text-[0.6rem] transition-transform duration-200 group-[.is-open]:rotate-180">&#9662;</span>
@@ -168,6 +167,7 @@
                 </ul>
             </li>
             <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
+            <li class="flex items-center"><a href="/#story-reveal" class="nav-link">Our Story</a></li>
             <li class="flex items-center"><a href="/#contact" class="nav-link">Contact Us</a></li>
         </ul>
 
@@ -179,8 +179,7 @@
     </div>
 
     <div id="mobile-menu" inert class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] md:top-[var(--nav-h)] lg:hidden">
-        <a href="/#story-reveal" class="mobile-nav-link border-t-0">Our Story</a>
-        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link flex cursor-pointer items-center justify-between">
+        <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link border-t-0 flex cursor-pointer items-center justify-between">
             Our Services <span aria-hidden="true" class="text-[0.6rem]">&#9662;</span>
         </button>
         <div id="mobile-services" class="hidden flex-col bg-ink/[0.04]">
@@ -191,15 +190,16 @@
             <a href="/social-media" class="mobile-subnav-link">Social Media</a>
         </div>
         <a href="/#work" class="mobile-nav-link">Our Work</a>
+        <a href="/#story-reveal" class="mobile-nav-link">Our Story</a>
         <a href="/#contact" class="mobile-nav-link">Contact Us</a>
     </div>
 </nav>
 <!-- /include:nav --></header>
 
-    <main id="main" tabindex="-1" class="relative h-[calc(100dvh-var(--nav-h))] snap-y snap-mandatory overflow-y-scroll scroll-smooth outline-none max-md:snap-none">
+    <main id="main" tabindex="-1" class="relative h-[calc(100dvh-var(--nav-h))] overflow-y-scroll scroll-smooth outline-none">
 
         <!-- ── Hero ── -->
-        <section id="hero" data-snap-section class="h-full snap-start">
+        <section id="hero" data-full-section class="h-full">
             <div class="relative flex h-auto flex-col items-center justify-center px-6 pb-[4vh] pt-[6vh] text-center md:h-full md:pb-[12vh] md:pt-[8vh]">
                 <h1 class="sr-only">Custom Web Design &amp; Online Stores in East Tennessee (Lenoir City, Loudon, Knoxville) | J Eleven Media</h1>
                 <img src="/images/logo-2000.webp" srcset="/images/logo-1000.webp 1000w, /images/logo-2000.webp 2000w" sizes="min(1000px, 90vw)" width="2000" height="577" alt="J Eleven Media" fetchpriority="high" class="block h-auto w-[min(1000px,90vw)]">
@@ -211,51 +211,8 @@
             </div>
         </section>
 
-        <!-- ── Our Story ── -->
-        <section id="story-reveal" data-snap-section data-reveal-group aria-labelledby="story-heading" class="flex flex-col overflow-visible md:h-full md:snap-start md:overflow-hidden">
-            <div class="flex shrink-0 items-center px-[5vw] py-4 md:px-[6vw] md:py-[1.4rem]">
-                <h2 id="story-heading" class="section-title font-playfair text-cocoa">Our Story</h2>
-            </div>
-
-            <div class="flex min-h-0 flex-1 overflow-visible md:overflow-hidden">
-                <div class="flex min-h-0 flex-1 flex-col md:grid md:grid-cols-3 md:items-stretch">
-
-                    <div class="flex flex-col justify-center gap-3 px-[5vw] py-4 md:gap-[clamp(0.8rem,1.5vw,1.5rem)] md:border-r md:border-line-2 md:px-[6vw] md:py-[clamp(1rem,2.5vw,2.5rem)]">
-                        <p class="max-w-[50ch] font-playfair text-[clamp(1rem,1.3vw,1.3rem)] font-normal leading-[1.7] text-ink">We are J Eleven Media, a husband-and-wife team based in East Tennessee. We started this business with a goal to help local small businesses thrive with beautiful websites.</p>
-                        <p class="max-w-[50ch] font-playfair text-[clamp(1rem,1.3vw,1.3rem)] font-normal leading-[1.7] text-ink">We treat every client like family and your vision becomes our own. Together, we&rsquo;ll create a professional website that truly reflects your brand so you have something to be proud to share with the world.</p>
-                        <p class="max-w-[50ch] font-playfair text-[clamp(1rem,1.3vw,1.3rem)] font-normal leading-[1.7] text-ink">All of our work is built on trust, clear communication and thoughtfulness. Because every business deserves something that feels personal.</p>
-                    </div>
-
-                    <div class="flex h-[120vw] items-center justify-center overflow-hidden md:h-auto md:border-r md:border-line-2 md:p-[clamp(0.8rem,1.5vw,1.5rem)]">
-                        <div class="relative flex h-full w-full items-center justify-center overflow-hidden">
-                            <img src="/images/family-photo.webp" width="800" height="1368" alt="Hayden and Olivia McBride, founders of J Eleven Media in Lenoir City, TN" loading="lazy" decoding="async" class="absolute left-0 top-[-10%] h-[140%] w-full rounded-none object-cover object-top md:static md:h-full md:rounded-[14px] md:object-[center_50%]">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col overflow-visible md:overflow-hidden">
-                    <div data-reveal data-delay="200" class="flex flex-1 flex-col justify-center gap-2 px-[5vw] py-4 md:gap-[clamp(0.4rem,0.8vw,0.8rem)] md:border-b md:border-line-2 md:py-[clamp(0.6rem,1vw,1rem)] md:pl-[clamp(0.8rem,1.5vw,1.5rem)] md:pr-[clamp(1rem,4vw,3rem)] md:transition-[opacity,translate] md:duration-1000 md:ease-snap md:last:border-b-0 js:md:translate-x-9 js:md:opacity-0 revealed:md:translate-x-0 revealed:md:opacity-100">
-                        <div class="size-7 shrink-0 rounded-full bg-line"></div>
-                        <h3 class="font-playfair text-[clamp(1.2rem,5vw,1.5rem)] font-normal leading-[1.15] text-ink md:text-[clamp(1.1rem,1.6vw,1.7rem)]">Why We Started</h3>
-                        <p class="font-playfair text-[0.95rem] font-normal leading-[1.65] text-ink-soft md:text-[clamp(0.85rem,1vw,1.1rem)]">We’ve always been passionate about helping others, and we saw a need for affordable, high-quality web design services in our community. We created J Eleven Media to fill that gap.</p>
-                    </div>
-                    <div data-reveal data-delay="800" class="flex flex-1 flex-col justify-center gap-2 px-[5vw] py-4 md:gap-[clamp(0.4rem,0.8vw,0.8rem)] md:border-b md:border-line-2 md:py-[clamp(0.6rem,1vw,1rem)] md:pl-[clamp(0.8rem,1.5vw,1.5rem)] md:pr-[clamp(1rem,4vw,3rem)] md:transition-[opacity,translate] md:duration-1000 md:ease-snap md:last:border-b-0 js:md:translate-x-9 js:md:opacity-0 revealed:md:translate-x-0 revealed:md:opacity-100">
-                        <div class="size-7 shrink-0 rounded-full bg-line"></div>
-                        <h3 class="font-playfair text-[clamp(1.2rem,5vw,1.5rem)] font-normal leading-[1.15] text-ink md:text-[clamp(1.1rem,1.6vw,1.7rem)]">Our Values</h3>
-                        <p class="font-playfair text-[0.95rem] font-normal leading-[1.65] text-ink-soft md:text-[clamp(0.85rem,1vw,1.1rem)]">As a family-owned business, we believe relationships matter more than transactions. We operate with integrity, striving to be transparent, honest and communicative in everything we do.</p>
-                    </div>
-                    <div data-reveal data-delay="1400" class="flex flex-1 flex-col justify-center gap-2 px-[5vw] py-4 md:gap-[clamp(0.4rem,0.8vw,0.8rem)] md:border-b md:border-line-2 md:py-[clamp(0.6rem,1vw,1rem)] md:pl-[clamp(0.8rem,1.5vw,1.5rem)] md:pr-[clamp(1rem,4vw,3rem)] md:transition-[opacity,translate] md:duration-1000 md:ease-snap md:last:border-b-0 js:md:translate-x-9 js:md:opacity-0 revealed:md:translate-x-0 revealed:md:opacity-100">
-                        <div class="size-7 shrink-0 rounded-full bg-line"></div>
-                        <h3 class="font-playfair text-[clamp(1.2rem,5vw,1.5rem)] font-normal leading-[1.15] text-ink md:text-[clamp(1.1rem,1.6vw,1.7rem)]">Our Promise to Small Businesses</h3>
-                        <p class="font-playfair text-[0.95rem] font-normal leading-[1.65] text-ink-soft md:text-[clamp(0.85rem,1vw,1.1rem)]">We promise to be a dedicated partner in your success, providing you with a high-quality website in a timely manner, and to treat your business goals like they are our own.</p>
-                    </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
         <!-- ── Our Services ── -->
-        <section id="services" data-snap-section data-reveal-group aria-labelledby="services-heading" class="flex flex-col overflow-visible px-[5vw] md:h-full md:snap-start md:overflow-hidden md:px-[6vw]">
+        <section id="services" data-full-section data-reveal-group aria-labelledby="services-heading" class="flex flex-col overflow-visible px-[5vw] md:h-full md:overflow-hidden md:px-[6vw]">
             <div class="flex shrink-0 flex-col gap-2 py-4 md:py-[1.2rem]">
                 <h2 id="services-heading" class="section-title font-cormorant text-cocoa">Our Services</h2>
                 <p class="max-w-[60ch] font-cormorant text-[clamp(1.15rem,1.6vw,1.4rem)] italic leading-[1.5] text-ink-soft">Everything your business needs to look great online and stay that way, built by hand in East Tennessee.</p>
@@ -316,14 +273,14 @@
 
         <!-- ── Our Work ── -->
         <!-- One card per project: add a card (and its two screenshots in /images) to show more work. -->
-        <section id="work" data-snap-section data-reveal-group aria-labelledby="work-heading" class="flex flex-col overflow-visible px-[5vw] md:h-full md:snap-start md:overflow-hidden md:px-[6vw]">
+        <section id="work" data-full-section data-reveal-group aria-labelledby="work-heading" class="flex flex-col overflow-visible px-[5vw] md:h-full md:overflow-hidden md:px-[6vw]">
             <div class="flex shrink-0 items-center py-4 md:py-[1.2rem]">
                 <h2 id="work-heading" class="section-title font-cormorant text-cocoa">Our Work</h2>
             </div>
 
             <div class="grid flex-1 grid-cols-1 content-center gap-10 py-4 md:grid-cols-3 md:gap-[2.2vw] md:py-0">
                     <a href="https://mistytidwell.com" target="_blank" rel="noopener noreferrer" data-reveal data-delay="200" class="group flex flex-col gap-4 no-underline md:transition-[opacity,translate] md:duration-[1200ms] md:ease-snap js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100 focus-ring rounded-xl">
-                        <div class="relative mb-6 mr-4">
+                        <div class="relative mb-6 mr-4 transition-[scale] duration-300 ease-snap group-hover:scale-[1.03]">
                             <div class="overflow-hidden rounded-xl border border-line-2 bg-white shadow-[0_10px_30px_rgba(27,24,20,0.08)]">
                                 <div aria-hidden="true" class="flex h-6 items-center gap-1.5 border-b border-line bg-paper/60 px-3"><span class="size-2 rounded-full bg-line-2"></span><span class="size-2 rounded-full bg-line-2"></span><span class="size-2 rounded-full bg-line-2"></span></div>
                                 <img src="/images/work-misty-tidwell-desktop.webp" width="1200" height="750" alt="Misty Tidwell website on a desktop" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover object-top">
@@ -341,7 +298,7 @@
                         </div>
                     </a>
                     <a href="https://roguek9.com" target="_blank" rel="noopener noreferrer" data-reveal data-delay="450" class="group flex flex-col gap-4 no-underline md:transition-[opacity,translate] md:duration-[1200ms] md:ease-snap js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100 focus-ring rounded-xl">
-                        <div class="relative mb-6 mr-4">
+                        <div class="relative mb-6 mr-4 transition-[scale] duration-300 ease-snap group-hover:scale-[1.03]">
                             <div class="overflow-hidden rounded-xl border border-line-2 bg-white shadow-[0_10px_30px_rgba(27,24,20,0.08)]">
                                 <div aria-hidden="true" class="flex h-6 items-center gap-1.5 border-b border-line bg-paper/60 px-3"><span class="size-2 rounded-full bg-line-2"></span><span class="size-2 rounded-full bg-line-2"></span><span class="size-2 rounded-full bg-line-2"></span></div>
                                 <img src="/images/work-rogue-k9-desktop.webp" width="1200" height="750" alt="Rogue K9 Solutions website on a desktop" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover object-top">
@@ -359,7 +316,7 @@
                         </div>
                     </a>
                     <div data-reveal data-delay="700" class="group flex flex-col gap-4 no-underline md:transition-[opacity,translate] md:duration-[1200ms] md:ease-snap js:md:translate-y-7 js:md:opacity-0 revealed:md:translate-y-0 revealed:md:opacity-100">
-                        <div class="relative mb-6 mr-4">
+                        <div class="relative mb-6 mr-4 transition-[scale] duration-300 ease-snap group-hover:scale-[1.03]">
                             <div class="overflow-hidden rounded-xl border border-line-2 bg-white shadow-[0_10px_30px_rgba(27,24,20,0.08)]">
                                 <div aria-hidden="true" class="flex h-6 items-center gap-1.5 border-b border-line bg-paper/60 px-3"><span class="size-2 rounded-full bg-line-2"></span><span class="size-2 rounded-full bg-line-2"></span><span class="size-2 rounded-full bg-line-2"></span></div>
                                 <img src="/images/work-anchor-christian-desktop.webp" width="1200" height="750" alt="Anchor Christian website on a desktop" loading="lazy" decoding="async" class="aspect-[16/10] w-full object-cover object-top">
@@ -388,8 +345,51 @@
             </div>
         </section>
 
+        <!-- ── Our Story ── -->
+        <section id="story-reveal" data-full-section data-reveal-group aria-labelledby="story-heading" class="flex flex-col overflow-visible md:h-full md:overflow-hidden">
+            <div class="flex shrink-0 items-center px-[5vw] py-4 md:px-[6vw] md:py-[1.4rem]">
+                <h2 id="story-heading" class="section-title font-playfair text-cocoa">Our Story</h2>
+            </div>
+
+            <div class="flex min-h-0 flex-1 overflow-visible md:overflow-hidden">
+                <div class="flex min-h-0 flex-1 flex-col md:grid md:grid-cols-3 md:items-stretch">
+
+                    <div class="flex flex-col justify-center gap-3 px-[5vw] py-4 md:gap-[clamp(0.8rem,1.5vw,1.5rem)] md:border-r md:border-line-2 md:px-[6vw] md:py-[clamp(1rem,2.5vw,2.5rem)]">
+                        <p class="max-w-[50ch] font-playfair text-[clamp(1rem,1.3vw,1.3rem)] font-normal leading-[1.7] text-ink">We are J Eleven Media, a husband-and-wife team based in East Tennessee. We started this business with a goal to help local small businesses thrive with beautiful websites.</p>
+                        <p class="max-w-[50ch] font-playfair text-[clamp(1rem,1.3vw,1.3rem)] font-normal leading-[1.7] text-ink">We treat every client like family and your vision becomes our own. Together, we&rsquo;ll create a professional website that truly reflects your brand so you have something to be proud to share with the world.</p>
+                        <p class="max-w-[50ch] font-playfair text-[clamp(1rem,1.3vw,1.3rem)] font-normal leading-[1.7] text-ink">All of our work is built on trust, clear communication and thoughtfulness. Because every business deserves something that feels personal.</p>
+                    </div>
+
+                    <div class="flex h-[120vw] items-center justify-center overflow-hidden md:h-auto md:border-r md:border-line-2 md:p-[clamp(0.8rem,1.5vw,1.5rem)]">
+                        <div class="relative flex h-full w-full items-center justify-center overflow-hidden">
+                            <img src="/images/family-photo.webp" width="800" height="1368" alt="Hayden and Olivia McBride, founders of J Eleven Media in Lenoir City, TN" loading="lazy" decoding="async" class="absolute left-0 top-[-10%] h-[140%] w-full rounded-none object-cover object-top md:static md:h-full md:rounded-[14px] md:object-[center_50%]">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col overflow-visible md:overflow-hidden">
+                    <div data-reveal data-delay="200" class="flex flex-1 flex-col justify-center gap-2 px-[5vw] py-4 md:gap-[clamp(0.4rem,0.8vw,0.8rem)] md:border-b md:border-line-2 md:py-[clamp(0.6rem,1vw,1rem)] md:pl-[clamp(0.8rem,1.5vw,1.5rem)] md:pr-[clamp(1rem,4vw,3rem)] md:transition-[opacity,translate] md:duration-1000 md:ease-snap md:last:border-b-0 js:md:translate-x-9 js:md:opacity-0 revealed:md:translate-x-0 revealed:md:opacity-100">
+                        <div class="size-7 shrink-0 rounded-full bg-line"></div>
+                        <h3 class="font-playfair text-[clamp(1.2rem,5vw,1.5rem)] font-normal leading-[1.15] text-ink md:text-[clamp(1.1rem,1.6vw,1.7rem)]">Why We Started</h3>
+                        <p class="font-playfair text-[0.95rem] font-normal leading-[1.65] text-ink-soft md:text-[clamp(0.85rem,1vw,1.1rem)]">We’ve always been passionate about helping others, and we saw a need for affordable, high-quality web design services in our community. We created J Eleven Media to fill that gap.</p>
+                    </div>
+                    <div data-reveal data-delay="800" class="flex flex-1 flex-col justify-center gap-2 px-[5vw] py-4 md:gap-[clamp(0.4rem,0.8vw,0.8rem)] md:border-b md:border-line-2 md:py-[clamp(0.6rem,1vw,1rem)] md:pl-[clamp(0.8rem,1.5vw,1.5rem)] md:pr-[clamp(1rem,4vw,3rem)] md:transition-[opacity,translate] md:duration-1000 md:ease-snap md:last:border-b-0 js:md:translate-x-9 js:md:opacity-0 revealed:md:translate-x-0 revealed:md:opacity-100">
+                        <div class="size-7 shrink-0 rounded-full bg-line"></div>
+                        <h3 class="font-playfair text-[clamp(1.2rem,5vw,1.5rem)] font-normal leading-[1.15] text-ink md:text-[clamp(1.1rem,1.6vw,1.7rem)]">Our Values</h3>
+                        <p class="font-playfair text-[0.95rem] font-normal leading-[1.65] text-ink-soft md:text-[clamp(0.85rem,1vw,1.1rem)]">As a family-owned business, we believe relationships matter more than transactions. We operate with integrity, striving to be transparent, honest and communicative in everything we do.</p>
+                    </div>
+                    <div data-reveal data-delay="1400" class="flex flex-1 flex-col justify-center gap-2 px-[5vw] py-4 md:gap-[clamp(0.4rem,0.8vw,0.8rem)] md:border-b md:border-line-2 md:py-[clamp(0.6rem,1vw,1rem)] md:pl-[clamp(0.8rem,1.5vw,1.5rem)] md:pr-[clamp(1rem,4vw,3rem)] md:transition-[opacity,translate] md:duration-1000 md:ease-snap md:last:border-b-0 js:md:translate-x-9 js:md:opacity-0 revealed:md:translate-x-0 revealed:md:opacity-100">
+                        <div class="size-7 shrink-0 rounded-full bg-line"></div>
+                        <h3 class="font-playfair text-[clamp(1.2rem,5vw,1.5rem)] font-normal leading-[1.15] text-ink md:text-[clamp(1.1rem,1.6vw,1.7rem)]">Our Promise to Small Businesses</h3>
+                        <p class="font-playfair text-[0.95rem] font-normal leading-[1.65] text-ink-soft md:text-[clamp(0.85rem,1vw,1.1rem)]">We promise to be a dedicated partner in your success, providing you with a high-quality website in a timely manner, and to treat your business goals like they are our own.</p>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- ── Contact ── -->
-        <section id="contact" data-snap-section aria-labelledby="contact-heading" class="flex flex-col overflow-visible bg-cocoa px-[5vw] pb-8 md:h-full md:snap-start md:overflow-hidden md:px-[6vw] md:pb-0">
+        <section id="contact" data-full-section aria-labelledby="contact-heading" class="flex flex-col overflow-visible bg-cocoa px-[5vw] pb-8 md:h-full md:overflow-hidden md:px-[6vw] md:pb-0">
             <div class="flex shrink-0 items-center py-[1.2rem]">
                 <h2 id="contact-heading" class="section-title font-playfair text-paper">Contact Us</h2>
             </div>
@@ -469,7 +469,7 @@
         </section>
 
         <!-- include:footer -->
-<footer class="snap-end bg-ink px-[5vw] pb-8 pt-10 text-paper md:px-[6vw]">
+<footer class="bg-ink px-[5vw] pb-8 pt-10 text-paper md:px-[6vw]">
     <div class="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 text-center md:grid-cols-3 md:text-left">
 
         <div class="flex flex-col items-center gap-2 md:items-start">

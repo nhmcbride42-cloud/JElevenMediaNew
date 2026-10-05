@@ -125,12 +125,11 @@
     color: var(--color-paper);
   }
 
-  /* Full-screen snap sections are desktop only (homepage). */
+  /* Full-screen sections are desktop only (homepage). */
   @media (max-width: 768px) {
-    [data-snap-section] {
+    [data-full-section] {
       height: auto !important;
       min-height: auto;
-      scroll-snap-align: none;
       overflow: visible !important;
     }
   }
