@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Website Add-Ons & Google Business Profile Setup | J Eleven Media</title>
     <meta name="description" content="Google Business Profile setup, extra pages, extra products, and tool integrations you can add to any J Eleven Media website or store package.">
     <link rel="canonical" href="https://www.jelevenmedia.com/add-ons">
@@ -146,9 +146,7 @@
     <script src="/js/includes.js" defer></script>
     <header id="nav-placeholder" class="fixed inset-x-0 top-0 z-[100]"><!-- include:nav -->
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[10000] rounded bg-white px-4 py-2 font-playfair font-semibold text-ink">Skip to main content</a>
-<!-- Safe area bar (notch/status bar) -->
-<div class="fixed inset-x-0 top-0 z-[9999] h-[env(safe-area-inset-top)] bg-paper md:hidden"></div>
-<nav aria-label="Main navigation" class="border-b border-line-2 bg-paper pt-[env(safe-area-inset-top)] md:pt-0 md:backdrop-blur-[10px]">
+<nav aria-label="Main navigation" class="border-b border-line-2 bg-paper">
     <div class="mx-auto grid h-[var(--nav-h)] max-w-[1440px] grid-cols-[auto_auto] items-center justify-between px-6 lg:grid-cols-[auto_1fr_auto] lg:justify-normal lg:px-12">
         <a href="/" class="flex items-center justify-self-start leading-none no-underline focus-ring">
             <img src="/images/logo-480.webp" alt="J Eleven Media home" width="480" height="138" class="block h-[65px] w-auto max-[480px]:h-[52px]" fetchpriority="high">
@@ -179,7 +177,7 @@
         </button>
     </div>
 
-    <div id="mobile-menu" inert class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] md:top-[var(--nav-h)] lg:hidden">
+    <div id="mobile-menu" inert class="fixed inset-x-0 top-[var(--nav-h)] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] lg:hidden">
         <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link border-t-0 flex cursor-pointer items-center justify-between">
             Our Services <span aria-hidden="true" class="text-[0.6rem]">&#9662;</span>
         </button>
@@ -199,41 +197,72 @@
 
     <main id="main" class="flex flex-col bg-paper">
 
-        <!-- Hero -->
-        <section class="page-hero">
-            <div class="flex flex-col justify-center gap-3 p-[clamp(2rem,6vw,5rem)]">
-                <h1 class="page-title">Add-Ons</h1>
-                <p class="page-motto">Mix into any website or store package.</p>
-            </div>
-        </section>
-
-        <!-- Links to every service page -->
-        <!-- include:services -->
-<nav aria-label="Services" class="flex justify-center border-b border-line-2 bg-paper px-6 py-[0.9rem]">
-    <ul class="flex list-none flex-wrap items-center justify-center gap-x-[1.4rem] gap-y-2 md:gap-x-0">
-        <li class="flex items-center"><a href="/web-design" class="ticker-link">Web Design</a></li>
-        <li class="flex items-center"><span aria-hidden="true" class="mx-4 hidden select-none font-cormorant text-[1.1rem] leading-none text-ink-faint md:inline">&middot;</span><a href="/online-stores" class="ticker-link">Online Stores</a></li>
-        <li class="flex items-center"><span aria-hidden="true" class="mx-4 hidden select-none font-cormorant text-[1.1rem] leading-none text-ink-faint md:inline">&middot;</span><a href="/care-plans" class="ticker-link">Care Plans</a></li>
-        <li class="flex items-center"><span aria-hidden="true" class="mx-4 hidden select-none font-cormorant text-[1.1rem] leading-none text-ink-faint md:inline">&middot;</span><a href="/add-ons" class="ticker-link">Add-Ons</a></li>
-        <li class="flex items-center"><span aria-hidden="true" class="mx-4 hidden select-none font-cormorant text-[1.1rem] leading-none text-ink-faint md:inline">&middot;</span><a href="/social-media" class="ticker-link">Social Media</a></li>
+        <!-- Hero: title and buttons on the left, prices at a glance on the right -->
+        <section class="bg-cocoa">
+            <div class="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-12 md:grid-cols-[1.1fr_1fr] md:gap-14 md:px-6 md:py-16">
+                <div class="flex flex-col gap-6">
+                    <!-- include:services -->
+<nav aria-label="Services">
+    <ul class="flex list-none flex-wrap gap-2">
+        <li><a href="/web-design" class="service-tag">Web Design</a></li>
+        <li><a href="/online-stores" class="service-tag">Online Stores</a></li>
+        <li><a href="/care-plans" class="service-tag">Care Plans</a></li>
+        <li><a href="/add-ons" class="service-tag">Add-Ons</a></li>
+        <li><a href="/social-media" class="service-tag">Social Media</a></li>
     </ul>
 </nav>
 <!-- /include:services -->
+                    <h1 class="font-playfair text-[clamp(2.4rem,4.5vw,4rem)] font-normal leading-[1.05] text-paper">Add-Ons</h1>
+                    <p class="max-w-[44ch] font-cormorant text-[clamp(1.25rem,1.8vw,1.5rem)] italic leading-[1.45] text-paper/85">Mix into any website or store package.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#packages" class="btn-light">See packages &darr;</a>
+                        <a href="/contact" class="btn-outline-light">Get started &rarr;</a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-5 rounded-[28px] bg-paper p-6 shadow-[0_24px_60px_rgba(0,0,0,0.25)] md:p-8">
+                    <div class="flex items-baseline justify-between gap-4">
+                        <h2 class="includes-title">At a glance</h2>
+                        <span class="font-cormorant text-[1.1rem] italic text-ink-soft">Priced per add-on</span>
+                    </div>
+                    <dl class="flex flex-col">
+                        <div class="flex items-baseline justify-between gap-4 border-t border-line py-3.5 first:border-t-0">
+                            <dt class="flex flex-col"><span class="font-playfair text-[1.1rem] text-ink">Google Business Profile</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">one-time</span></dt>
+                            <dd class="whitespace-nowrap font-playfair text-[1.4rem] text-clay">$350</dd>
+                        </div>
+                        <div class="flex items-baseline justify-between gap-4 border-t border-line py-3.5 first:border-t-0">
+                            <dt class="flex flex-col"><span class="font-playfair text-[1.1rem] text-ink">Extra Pages</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">per page</span></dt>
+                            <dd class="whitespace-nowrap font-playfair text-[1.4rem] text-clay">$200</dd>
+                        </div>
+                        <div class="flex items-baseline justify-between gap-4 border-t border-line py-3.5 first:border-t-0">
+                            <dt class="flex flex-col"><span class="font-playfair text-[1.1rem] text-ink">Extra Products</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">per product</span></dt>
+                            <dd class="whitespace-nowrap font-playfair text-[1.4rem] text-clay">$5&ndash;$15</dd>
+                        </div>
+                        <div class="flex items-baseline justify-between gap-4 border-t border-line py-3.5 first:border-t-0">
+                            <dt class="flex flex-col"><span class="font-playfair text-[1.1rem] text-ink">Connecting Your Tools</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">booking, CRM, and more</span></dt>
+                            <dd class="whitespace-nowrap font-playfair text-[1.4rem] text-clay">from $300</dd>
+                        </div>
+                    </dl>
+                    <a href="#packages" class="cta-link self-start text-[1rem]">See every package &darr;</a>
+                </div>
+            </div>
+        </section>
 
         <!-- What we do / why it matters -->
-        <section class="grid grid-cols-1 gap-8 bg-white px-6 py-10 md:grid-cols-2 md:gap-[4vw] md:px-[clamp(1.5rem,10vw,12rem)] md:py-[clamp(2.5rem,6vh,4.5rem)]">
-            <div class="flex flex-col gap-3">
-                <h2 class="body-heading">What We Do</h2>
-                <p class="body-copy">Need a little more than your package includes? Add-ons let you build exactly what your business needs, from showing up properly on Google Search and Maps to linking your website with the tools you already use.</p>
-            </div>
-            <div class="flex flex-col gap-3">
-                <h2 class="body-heading">Why It Matters</h2>
-                <p class="body-copy">A beautiful website only helps if people can find it and it fits the way you work. Your Google Business Profile is often the first thing local customers see when they search, and connecting your website to your booking calendar or CRM saves you time with every new customer.</p>
+        <section class="bg-white">
+            <div class="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-8 px-5 py-12 md:grid-cols-[1.25fr_1fr] md:gap-14 md:px-6 md:py-16">
+                <div class="flex flex-col gap-4">
+                    <h2 class="includes-title">What we do</h2>
+                    <p class="font-playfair text-[clamp(1.1rem,1.5vw,1.3rem)] leading-[1.7] text-ink">Need a little more than your package includes? Add-ons let you build exactly what your business needs, from showing up properly on Google Search and Maps to linking your website with the tools you already use.</p>
+                </div>
+                <div class="flex flex-col gap-4 rounded-[24px] bg-paper/60 p-6 md:p-8">
+                    <h2 class="includes-title">Why it matters</h2>
+                    <p class="font-playfair text-[1.05rem] leading-[1.75] text-ink-soft">A beautiful website only helps if people can find it and it fits the way you work. Your Google Business Profile is often the first thing local customers see when they search, and connecting your website to your booking calendar or CRM saves you time with every new customer.</p>
+                </div>
             </div>
         </section>
 
         <!-- Packages and pricing -->
-        <div class="flex flex-col gap-14 border-t border-line-2 px-6 py-10 md:px-[clamp(1.5rem,10vw,12rem)] md:py-[clamp(2.5rem,6vh,4.5rem)]">
+        <div id="packages" class="flex flex-col gap-14 px-6 py-10 md:px-[clamp(1.5rem,10vw,12rem)] md:py-[clamp(2.5rem,6vh,4.5rem)]">
 
             <section aria-labelledby="add-on-options" class="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
                 <div class="text-center">

@@ -222,7 +222,7 @@ When a price changes, update **every** place it appears:
 |---|---|
 | Lowest website price ("Sites starting at $500") | Homepage "Our Services" list, homepage `<meta name="description">`, `web-design.html` meta description |
 | Care plan monthly price ("From $50/month") | Homepage "Our Services" list, `care-plans.html` meta description |
-| Any package price | That page's structured data (`"price"` / `"minPrice"` in the `application/ld+json` block in `<head>`) |
+| Any package price | The "At a glance" card at the top of that service page, and that page's structured data (`"price"` / `"minPrice"` in the `application/ld+json` block in `<head>`) |
 | Extra products ($5–$15) | Note under the store packages on `online-stores.html` |
 
 Search the project for the old amount (e.g. `$1,000` and `"1000"`) to catch them all. Price text needs no rebuild; new classes do.
@@ -255,7 +255,7 @@ Repeated styles are defined once as `@utility` blocks in `src/input.css`:
 |---|---|
 | Nav / footer | `nav-link`, `dropdown-link`, `mobile-nav-link`, `mobile-subnav-link`, `menu-bar`, `footer-link` |
 | Text | `section-title`, `cta-link`, `body-heading`, `body-copy`, `group-heading`, `group-intro`, `fine-print`, `inline-link` |
-| Service pages | `page-hero`, `page-title`, `page-motto`, `ticker-link`, `includes-title`, `include-chip`, `package-grid`, `package-card`, `package-name`, `package-price-label`, `package-price`, `package-price-note`, `package-tagline`, `check-list`, `check-item`, `check-mark` |
+| Service pages | `page-hero`, `page-title`, `page-motto`, `service-tag`, `includes-title`, `include-chip`, `package-grid`, `package-card`, `package-name`, `package-price-label`, `package-price`, `package-price-note`, `package-tagline`, `check-list`, `check-item`, `check-mark` |
 | Forms | `form-label`, `form-input`, `form-error`, `form-status`, `form-submit` |
 | Accessibility | `focus-ring`, `focus-ring-light` |
 

@@ -1,7 +1,5 @@
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[10000] rounded bg-white px-4 py-2 font-playfair font-semibold text-ink">Skip to main content</a>
-<!-- Safe area bar (notch/status bar) -->
-<div class="fixed inset-x-0 top-0 z-[9999] h-[env(safe-area-inset-top)] bg-paper md:hidden"></div>
-<nav aria-label="Main navigation" class="border-b border-line-2 bg-paper pt-[env(safe-area-inset-top)] md:pt-0 md:backdrop-blur-[10px]">
+<nav aria-label="Main navigation" class="border-b border-line-2 bg-paper">
     <div class="mx-auto grid h-[var(--nav-h)] max-w-[1440px] grid-cols-[auto_auto] items-center justify-between px-6 lg:grid-cols-[auto_1fr_auto] lg:justify-normal lg:px-12">
         <a href="/" class="flex items-center justify-self-start leading-none no-underline focus-ring">
             <img src="/images/logo-480.webp" alt="J Eleven Media home" width="480" height="138" class="block h-[65px] w-auto max-[480px]:h-[52px]" fetchpriority="high">
@@ -32,7 +30,7 @@
         </button>
     </div>
 
-    <div id="mobile-menu" inert class="fixed inset-x-0 top-[calc(var(--nav-h)+env(safe-area-inset-top))] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] md:top-[var(--nav-h)] lg:hidden">
+    <div id="mobile-menu" inert class="fixed inset-x-0 top-[var(--nav-h)] z-[110] flex max-h-0 flex-col overflow-hidden border-b border-line-2 bg-paper opacity-0 [transition:max-height_0.45s_cubic-bezier(0.2,0.7,0.2,1),opacity_0.3s_ease] lg:hidden">
         <button id="mobile-services-button" type="button" aria-expanded="false" aria-controls="mobile-services" class="mobile-nav-link border-t-0 flex cursor-pointer items-center justify-between">
             Our Services <span aria-hidden="true" class="text-[0.6rem]">&#9662;</span>
         </button>

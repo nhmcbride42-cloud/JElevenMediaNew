@@ -101,9 +101,8 @@
   body {
     /* The nav is position: fixed (so iOS Safari paints the status bar area
        in the nav's color instead of showing the page through it), so the
-       page starts below it: nav height + its 1px border, plus the notch /
-       status bar area on phones. */
-    padding-top: calc(var(--nav-h) + 1px + env(safe-area-inset-top));
+       page starts below it: nav height + its 1px border. */
+    padding-top: calc(var(--nav-h) + 1px);
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-hanken);
@@ -215,8 +214,10 @@
   @apply max-w-[60ch] font-cormorant text-[clamp(1.1rem,1.4vw,1.3rem)] italic leading-[1.4] tracking-[0.02em] text-paper/70;
 }
 
-@utility ticker-link {
-  @apply font-playfair text-[0.9rem] tracking-[0.1em] text-ink no-underline opacity-55 transition-opacity duration-150 hover:opacity-100 aria-[current=page]:font-bold aria-[current=page]:opacity-100 focus-ring;
+/* Service links at the top of each service page hero (on brown). The
+   current page gets aria-current="page" from js/includes.js. */
+@utility service-tag {
+  @apply inline-block rounded-full border border-paper/30 px-4 py-1.5 font-playfair text-[0.85rem] tracking-[0.04em] text-paper/80 no-underline transition-colors duration-200 hover:border-paper hover:text-paper aria-[current=page]:border-paper aria-[current=page]:bg-paper aria-[current=page]:text-cocoa focus-ring-light;
 }
 
 @utility body-heading {
