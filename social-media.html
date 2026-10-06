@@ -152,17 +152,6 @@
         <section class="bg-cocoa">
             <div class="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 px-5 py-12 md:grid-cols-[1.1fr_1fr] md:gap-14 md:px-6 md:py-16">
                 <div class="flex flex-col gap-6">
-                    <!-- include:services -->
-<nav aria-label="Services">
-    <ul class="flex list-none flex-wrap gap-2">
-        <li><a href="/web-design" class="service-tag">Web Design</a></li>
-        <li><a href="/online-stores" class="service-tag">Online Stores</a></li>
-        <li><a href="/care-plans" class="service-tag">Care Plans</a></li>
-        <li><a href="/add-ons" class="service-tag">Add-Ons</a></li>
-        <li><a href="/social-media" class="service-tag">Social Media</a></li>
-    </ul>
-</nav>
-<!-- /include:services -->
                     <h1 class="font-playfair text-[clamp(2.4rem,4.5vw,4rem)] font-normal leading-[1.05] text-paper">Social Media Growth</h1>
                     <p class="max-w-[44ch] font-cormorant text-[clamp(1.25rem,1.8vw,1.5rem)] italic leading-[1.45] text-paper/85">Let's build a social media presence for your business into something that actually drives results.</p>
                     <div class="flex flex-wrap gap-3">
@@ -249,6 +238,55 @@
                 <p class="fine-print mx-auto text-center">Contact us for pricing.</p>
             </section>
         </div>
+
+        <!-- Other services -->
+        <section aria-labelledby="other-services" class="px-4 pb-12 md:px-6">
+            <div class="mx-auto flex max-w-[1200px] flex-col gap-6">
+                <h2 id="other-services" class="group-heading text-center">Explore our other services</h2>
+                <ul class="grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <li>
+                        <a href="/web-design" class="group flex h-full flex-col gap-3 rounded-[24px] bg-white p-6 no-underline transition-transform duration-300 hover:-translate-y-1 focus-ring">
+                            <span aria-hidden="true" class="flex size-11 items-center justify-center rounded-full bg-clay/10 p-2.5 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="40" height="30" rx="2"/><line x1="4" y1="17" x2="44" y2="17"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="24" x2="36" y2="24"/><line x1="12" y1="29" x2="30" y2="29"/><line x1="12" y1="34" x2="24" y2="34"/></svg></span>
+                            <span class="font-playfair text-[1.35rem] text-ink">Web Design</span>
+                            <span class="mt-auto flex items-baseline justify-between gap-3">
+                                <span class="font-cormorant text-[1.1rem] italic text-clay">From $500</span>
+                                <span aria-hidden="true" class="font-playfair text-clay transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/online-stores" class="group flex h-full flex-col gap-3 rounded-[24px] bg-white p-6 no-underline transition-transform duration-300 hover:-translate-y-1 focus-ring">
+                            <span aria-hidden="true" class="flex size-11 items-center justify-center rounded-full bg-clay/10 p-2.5 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16 H38 L36 42 H12 Z"/><path d="M18 20 V13 A6 6 0 0 1 30 13 V20"/><circle cx="18" cy="20" r="1.2" fill="currentColor" stroke="none"/><circle cx="30" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+                            <span class="font-playfair text-[1.35rem] text-ink">Online Stores</span>
+                            <span class="mt-auto flex items-baseline justify-between gap-3">
+                                <span class="font-cormorant text-[1.1rem] italic text-clay">From $500</span>
+                                <span aria-hidden="true" class="font-playfair text-clay transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/care-plans" class="group flex h-full flex-col gap-3 rounded-[24px] bg-white p-6 no-underline transition-transform duration-300 hover:-translate-y-1 focus-ring">
+                            <span aria-hidden="true" class="flex size-11 items-center justify-center rounded-full bg-clay/10 p-2.5 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 24 A14 14 0 1 1 24 10"/><polyline points="24,4 24,10 30,10"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="14" x2="24" y2="21"/><line x1="24" y1="27" x2="24" y2="30"/><line x1="30" y1="24" x2="34" y2="24"/></svg></span>
+                            <span class="font-playfair text-[1.35rem] text-ink">Care Plans</span>
+                            <span class="mt-auto flex items-baseline justify-between gap-3">
+                                <span class="font-cormorant text-[1.1rem] italic text-clay">From $50/month</span>
+                                <span aria-hidden="true" class="font-playfair text-clay transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/add-ons" class="group flex h-full flex-col gap-3 rounded-[24px] bg-white p-6 no-underline transition-transform duration-300 hover:-translate-y-1 focus-ring">
+                            <span aria-hidden="true" class="flex size-11 items-center justify-center rounded-full bg-clay/10 p-2.5 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><line x1="29.5" y1="29.5" x2="42" y2="42"/><polyline points="13,26 16,21 20,24 26,15"/><polyline points="22,15 26,15 26,19"/></svg></span>
+                            <span class="font-playfair text-[1.35rem] text-ink">Add-Ons</span>
+                            <span class="mt-auto flex items-baseline justify-between gap-3">
+                                <span class="font-cormorant text-[1.1rem] italic text-clay">Priced per add-on</span>
+                                <span aria-hidden="true" class="font-playfair text-clay transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
         <!-- Call to action -->
         <div class="px-4 pb-[clamp(2.5rem,6vh,4.5rem)] md:px-6">

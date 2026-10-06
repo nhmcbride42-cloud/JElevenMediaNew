@@ -214,12 +214,6 @@
   @apply max-w-[60ch] font-cormorant text-[clamp(1.1rem,1.4vw,1.3rem)] italic leading-[1.4] tracking-[0.02em] text-paper/70;
 }
 
-/* Service links at the top of each service page hero (on brown). The
-   current page gets aria-current="page" from js/includes.js. */
-@utility service-tag {
-  @apply inline-block rounded-full border border-paper/30 px-4 py-1.5 font-playfair text-[0.85rem] tracking-[0.04em] text-paper/80 no-underline transition-colors duration-200 hover:border-paper hover:text-paper aria-[current=page]:border-paper aria-[current=page]:bg-paper aria-[current=page]:text-cocoa focus-ring-light;
-}
-
 @utility body-heading {
   @apply font-cormorant text-[clamp(1.6rem,2.5vw,2.4rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink;
 }

@@ -34,7 +34,7 @@ Everything needed to run, edit, troubleshoot and extend jelevenmedia.com.
 | Rebuild CSS and shared pieces before committing | `npm run build` |
 | Publish a change | Commit → push to `main` → Vercel deploys automatically |
 | Change a price or package | Edit the matching service page's `.html` file (§7) |
-| Change the nav, footer or service links | Edit the file in `partials/`, then `npm run build` |
+| Change the nav or footer | Edit the file in `partials/`, then `npm run build` |
 | Change a color or font | `src/input.css` → `@theme` block, then `npm run build` |
 | Change who gets form emails | Vercel → Settings → Environment Variables → `CONTACT_TO_EMAIL` → redeploy |
 
@@ -42,7 +42,7 @@ Everything needed to run, edit, troubleshoot and extend jelevenmedia.com.
 - Always run `npm run build` before committing, and commit the rebuilt `dist/output.css`.
 - Never put inline `style="…"` or inline `<script>` code in a page: the security policy blocks them (§12). Use Tailwind classes and files in `/js`.
 - Never commit `.env` or API keys.
-- Edit the nav, footer and service links in `partials/`, never inside individual pages.
+- Edit the nav and footer in `partials/`, never inside individual pages.
 
 ---
 
@@ -111,8 +111,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 ├── 404.html                    "Page not found"
 ├── partials/
 │   ├── nav.html                Navigation (source of truth)
-│   ├── footer.html             Footer (source of truth)
-│   └── services.html           Row of service links under each service page's title
+│   └── footer.html             Footer (source of truth)
 ├── src/input.css               Tailwind source: theme, fonts, component classes
 ├── dist/output.css             Compiled CSS (generated; commit it, don't edit)
 ├── js/
@@ -164,11 +163,11 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 <body>
   <header id="nav-placeholder"><!-- include:nav --> … <!-- /include:nav --></header>
   <main id="main">
-    hero (title + motto)
-    <!-- include:services --> … <!-- /include:services -->   (service links row)
-    What We Do / Why It Matters
-    package groups (includes box, package cards, notes)
-    "Get Started Today →" (links to /contact)
+    hero (title, tagline, See packages / Get started buttons, "At a glance" price card)
+    What We Do / Why It Matters (white section)
+    package groups (id="packages": includes tags, package cards, notes)
+    "Explore our other services" (cards for the other four services)
+    brown "Ready to get started?" card (Get Started Today → /contact, Call button)
   </main>
   <!-- include:footer --> … <!-- /include:footer -->
 </body>
@@ -179,7 +178,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 1. Copy a similar page (e.g. `add-ons.html` → `new-page.html`).
 2. In `<head>`, update `<title>`, `<meta name="description">`, `<link rel="canonical">`, the `og:` tags and the structured data.
 3. Replace the content inside `<main>`. Keep the `<!-- include:… -->` markers.
-4. Add links in `partials/nav.html` (desktop dropdown **and** mobile menu), `partials/footer.html` and `partials/services.html`.
+4. Add links in `partials/nav.html` (desktop dropdown **and** mobile menu) and `partials/footer.html`. For a new service page, also add it to the "Explore our other services" cards on the other service pages.
 5. Add the URL to `sitemap.xml`.
 6. `npm run build`, preview, commit, push.
 
@@ -187,11 +186,11 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 
 ## 6. Shared pieces (partials)
 
-`npm run build` runs `scripts/includes.js`, which copies each file in `partials/` into every page between its `<!-- include:name -->` and `<!-- /include:name -->` markers. Pages without a marker are skipped (for example, only service pages have the service links row).
+`npm run build` runs `scripts/includes.js`, which copies each file in `partials/` into every page between its `<!-- include:name -->` and `<!-- /include:name -->` markers. Pages without a marker are skipped.
 
 - Edit the partial → `npm run build` → commit. Every page updates.
 - **Don't** edit these pieces inside a page; your change is overwritten on the next build.
-- The current page is highlighted automatically in the services dropdown, mobile menu and service links row (`js/includes.js` sets `aria-current="page"`).
+- The current page is highlighted automatically in the services dropdown and mobile menu (`js/includes.js` sets `aria-current="page"`).
 
 ---
 
@@ -255,7 +254,7 @@ Repeated styles are defined once as `@utility` blocks in `src/input.css`:
 |---|---|
 | Nav / footer | `nav-link`, `dropdown-link`, `mobile-nav-link`, `mobile-subnav-link`, `menu-bar`, `footer-link` |
 | Text | `section-title`, `cta-link`, `body-heading`, `body-copy`, `group-heading`, `group-intro`, `fine-print`, `inline-link` |
-| Service pages | `page-hero`, `page-title`, `page-motto`, `service-tag`, `includes-title`, `include-chip`, `package-grid`, `package-card`, `package-name`, `package-price-label`, `package-price`, `package-price-note`, `package-tagline`, `check-list`, `check-item`, `check-mark` |
+| Service pages | `page-hero`, `page-title`, `page-motto`, `includes-title`, `include-chip`, `package-grid`, `package-card`, `package-name`, `package-price-label`, `package-price`, `package-price-note`, `package-tagline`, `check-list`, `check-item`, `check-mark` |
 | Forms | `form-label`, `form-input`, `form-error`, `form-status`, `form-submit` |
 | Accessibility | `focus-ring`, `focus-ring-light` |
 
