@@ -106,7 +106,6 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 ├── online-stores.html          Shopify / online store packages
 ├── care-plans.html             Hosting + maintenance care plans
 ├── add-ons.html                Google Business Profile, extra pages/products, integrations
-├── social-media.html           Social media packages
 ├── contact.html                Contact page (three-step project form)
 ├── 404.html                    "Page not found"
 ├── partials/
@@ -143,7 +142,6 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 | `/online-stores` | `online-stores.html` | ✓ |
 | `/care-plans` | `care-plans.html` | ✓ |
 | `/add-ons` | `add-ons.html` | ✓ |
-| `/social-media` | `social-media.html` | ✓ |
 | `/contact` | `contact.html` | ✓ |
 | any unknown URL | `404.html` | — |
 
@@ -154,7 +152,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 | `/services/web-development` | `/web-design` |
 | `/services/maintenance`, `/services/hosting` | `/care-plans` |
 | `/services/seo` | `/add-ons` |
-| `/services/social-media` | `/social-media` |
+| `/services/social-media`, `/social-media` | `/add-ons` (social media packages were retired) |
 
 ### Service page anatomy
 
@@ -213,7 +211,7 @@ Prices follow the **J Eleven Media Pricing Guide**. Each page shows **at most fo
 </article>
 ```
 
-Cards line up row by row: each card is a subgrid with one row per part (name, price, tagline, features), and `row-span-4` says how many parts it has (`row-span-2` on Social Media, which has no prices or taglines). Every card in a group must have the same parts; use an empty `<div></div>` for a missing tagline or feature list. The grid's column classes follow the number of cards: `sm:grid-cols-2 lg:grid-cols-4` for four, `md:grid-cols-3` for three, `md:grid-cols-2` plus `max-w-[820px] mx-auto` for two.
+Cards line up row by row: each card is a subgrid with one row per part (name, price, tagline, features), and `row-span-4` says how many parts it has. Every card in a group must have the same parts; use an empty `<div></div>` for a missing tagline or feature list. The grid's column classes follow the number of cards: `sm:grid-cols-2 lg:grid-cols-4` for four, `md:grid-cols-3` for three, `md:grid-cols-2` plus `max-w-[820px] mx-auto` for two.
 
 When a price changes, update **every** place it appears:
 
