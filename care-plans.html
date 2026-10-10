@@ -70,7 +70,7 @@
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Website Care Plans",
+        "name": "Care Plans",
         "itemListElement": [
           {
             "@type": "Offer",
@@ -91,6 +91,30 @@
             "priceSpecification": {
               "@type": "UnitPriceSpecification",
               "price": "100",
+              "priceCurrency": "USD",
+              "unitText": "MONTH"
+            },
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Store Care",
+            "description": "Keeps your Shopify store online and checkout working.",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "100",
+              "priceCurrency": "USD",
+              "unitText": "MONTH"
+            },
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "name": "Store Care Plus",
+            "description": "For stores that add products and run sales often.",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "200",
               "priceCurrency": "USD",
               "unitText": "MONTH"
             },
@@ -143,7 +167,6 @@
                     <li><a href="/online-stores" class="dropdown-link">Online Stores</a></li>
                     <li><a href="/care-plans" class="dropdown-link">Care Plans</a></li>
                     <li><a href="/add-ons" class="dropdown-link">Add-Ons</a></li>
-                    <li><a href="/social-media" class="dropdown-link">Social Media</a></li>
                 </ul>
             </li>
             <li class="flex items-center"><a href="/#work" class="nav-link">Our Work</a></li>
@@ -167,7 +190,6 @@
             <a href="/online-stores" class="mobile-subnav-link">Online Stores</a>
             <a href="/care-plans" class="mobile-subnav-link">Care Plans</a>
             <a href="/add-ons" class="mobile-subnav-link">Add-Ons</a>
-            <a href="/social-media" class="mobile-subnav-link">Social Media</a>
         </div>
         <a href="/#work" class="mobile-nav-link">Our Work</a>
         <a href="/#story-reveal" class="mobile-nav-link">Our Story</a>
@@ -203,6 +225,10 @@
                             <dt class="flex flex-col"><span class="font-playfair text-[1.1rem] text-ink">Care Plus</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">or $1,000/year</span></dt>
                             <dd class="whitespace-nowrap font-playfair text-[1.4rem] text-clay">$100/mo</dd>
                         </div>
+                        <div class="flex items-baseline justify-between gap-4 border-t border-line py-3.5 first:border-t-0">
+                            <dt class="flex flex-col"><span class="font-playfair text-[1.1rem] text-ink">Store Care</span><span class="font-cormorant text-[1.05rem] italic text-ink-soft">for Shopify stores</span></dt>
+                            <dd class="whitespace-nowrap font-playfair text-[1.4rem] text-clay">from $100/mo</dd>
+                        </div>
                     </dl>
                     <a href="#packages" class="cta-link self-start text-[1rem]">See every package &darr;</a>
                 </div>
@@ -214,7 +240,7 @@
             <div class="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-8 px-5 py-12 md:grid-cols-[1.25fr_1fr] md:gap-14 md:px-6 md:py-16">
                 <div class="flex flex-col gap-4">
                     <h2 class="includes-title">What we do</h2>
-                    <p class="font-playfair text-[clamp(1.1rem,1.5vw,1.3rem)] leading-[1.7] text-ink">We take care of everything that keeps your website online: reliable, secure hosting, SSL security, uptime monitoring, and domain renewal. Each month we also make the small updates you need, like new text, photos, or hours, so your website never falls behind your business.</p>
+                    <p class="font-playfair text-[clamp(1.1rem,1.5vw,1.3rem)] leading-[1.7] text-ink">We take care of everything that keeps your website online: reliable, secure hosting, SSL security, uptime monitoring, and domain renewal. Each month we also make the small updates you need, like new text, photos, or hours, so your website never falls behind your business. Whatever plan you choose, we&rsquo;re always here to support you.</p>
                 </div>
                 <div class="flex flex-col gap-4 rounded-[24px] bg-paper/60 p-6 md:p-8">
                     <h2 class="includes-title">Why it matters</h2>
@@ -228,7 +254,7 @@
 
             <section aria-labelledby="care-plan-options" class="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
                 <div class="text-center">
-                    <h2 id="care-plan-options" class="group-heading">Care Plans</h2>
+                    <h2 id="care-plan-options" class="group-heading">Website Care Plans</h2>
                     <p class="group-intro mx-auto">Hosting, security, and updates handled for you, so your site stays fast and current.</p>
                 </div>
 
@@ -236,6 +262,7 @@
                     <article class="package-card row-span-4">
                         <h3 class="package-name">Care</h3>
                         <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$50 <span class="font-cormorant text-[1.1rem] italic text-ink-faint">/ month</span></p>
                             <p class="package-price-note">or $500 / year</p>
                         </div>
@@ -243,30 +270,80 @@
                         <ul class="check-list">
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Hosting, SSL security, and uptime monitoring</li>
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Domain renewal handled for you (domain cost passed through)</li>
-                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Contact form monitoring</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Monthly security updates</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Contact form and email monitoring</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Google Search Console setup, monitoring, and fixes</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Every version saved, with one-click restore</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Quarterly summary email</li>
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Up to 30 minutes of small updates each month, such as text, photos, or hours</li>
-                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Responses within 2 business days</li>
                         </ul>
                     </article>
                     <article class="package-card row-span-4">
                         <h3 class="package-name">Care Plus</h3>
                         <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
                             <p class="package-price">$100 <span class="font-cormorant text-[1.1rem] italic text-ink-faint">/ month</span></p>
                             <p class="package-price-note">or $1,000 / year</p>
                         </div>
                         <p class="package-tagline">For businesses that change and grow often.</p>
                         <ul class="check-list">
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Everything in Care</li>
-                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Up to 2 hours of updates each month, including new sections or pages</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Up to 2 hours of updates each month, including new sections, services, galleries, and layout changes</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Monthly report: visitors, Google searches, and work completed</li>
                             <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Quarterly speed and health check</li>
-                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Responses within 1 business day</li>
                         </ul>
                     </article>
                 </div>
+            </section>
 
+            <section aria-labelledby="store-care-options" class="mx-auto flex w-full max-w-[1200px] flex-col gap-8">
+                <div class="text-center">
+                    <h2 id="store-care-options" class="group-heading">Store Care Plans</h2>
+                    <p class="group-intro mx-auto">For online stores built on Shopify. Your Shopify subscription is billed separately by Shopify.</p>
+                </div>
+
+                <div class="package-grid mx-auto w-full max-w-[820px] md:grid-cols-2">
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Store Care</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
+                            <p class="package-price">$100 <span class="font-cormorant text-[1.1rem] italic text-ink-faint">/ month</span></p>
+                            <p class="package-price-note">or $1,000 / year</p>
+                        </div>
+                        <p class="package-tagline">Keeps your store online and checkout working.</p>
+                        <ul class="check-list">
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Store monitoring with alerts</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Monthly checkout and payment test</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Shopify app and theme updates</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Google Search Console setup, monitoring, and fixes</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Quarterly summary email</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Up to 30 minutes of small updates each month</li>
+                        </ul>
+                    </article>
+                    <article class="package-card row-span-4">
+                        <h3 class="package-name">Store Care Plus</h3>
+                        <div>
+                            <p class="package-price-label" aria-hidden="true">&nbsp;</p>
+                            <p class="package-price">$200 <span class="font-cormorant text-[1.1rem] italic text-ink-faint">/ month</span></p>
+                            <p class="package-price-note">or $2,000 / year</p>
+                        </div>
+                        <p class="package-tagline">For stores that add products and run sales often.</p>
+                        <ul class="check-list">
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Everything in Store Care</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Up to 2 hours of updates each month: new products, prices, sales, and banners</li>
+                            <li class="check-item"><span aria-hidden="true" class="check-mark">&#10003;</span>Monthly sales and traffic report</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mx-auto flex w-full max-w-[1200px] flex-col gap-2">
+                <p class="fine-print mx-auto text-center"><strong>Have a website and a store?</strong> Save 15% when both are on a Care plan.</p>
+                <p class="fine-print mx-auto text-center">Want your Google listing kept active too? Add <a href="/add-ons" class="inline-link">Google Business Profile Management</a> for $75/month.</p>
                 <ul class="flex list-none flex-col items-center gap-1 text-center">
-                    <li class="fine-print">A Care plan is required for any website we host.</li>
-                    <li class="fine-print">Work beyond your plan’s monthly time is billed at $75/hour. Unused time does not roll over.</li>
+                    <li class="fine-print">A Care plan is required for any website we host. Store Care plans are recommended.</li>
+                    <li class="fine-print">New pages can be added on any plan and are billed separately (<a href="/add-ons" class="inline-link">Extra Pages</a>, $200/page).</li>
+                    <li class="fine-print">Work beyond your plan&rsquo;s monthly time is billed at $75/hour. Unused time does not roll over.</li>
                     <li class="fine-print">Annual plans include two months free.</li>
                 </ul>
             </section>
@@ -276,7 +353,7 @@
         <section aria-labelledby="other-services" class="px-4 pb-12 md:px-6">
             <div class="mx-auto flex max-w-[1200px] flex-col gap-6">
                 <h2 id="other-services" class="group-heading text-center">Explore our other services</h2>
-                <ul class="grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <ul class="grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     <li>
                         <a href="/web-design" class="group flex h-full flex-col gap-3 rounded-[24px] bg-white p-6 no-underline transition-transform duration-300 hover:-translate-y-1 focus-ring">
                             <span aria-hidden="true" class="flex size-11 items-center justify-center rounded-full bg-clay/10 p-2.5 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="40" height="30" rx="2"/><line x1="4" y1="17" x2="44" y2="17"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="24" x2="36" y2="24"/><line x1="12" y1="29" x2="30" y2="29"/><line x1="12" y1="34" x2="24" y2="34"/></svg></span>
@@ -303,16 +380,6 @@
                             <span class="font-playfair text-[1.35rem] text-ink">Add-Ons</span>
                             <span class="mt-auto flex items-baseline justify-between gap-3">
                                 <span class="font-cormorant text-[1.1rem] italic text-clay">Priced per add-on</span>
-                                <span aria-hidden="true" class="font-playfair text-clay transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/social-media" class="group flex h-full flex-col gap-3 rounded-[24px] bg-white p-6 no-underline transition-transform duration-300 hover:-translate-y-1 focus-ring">
-                            <span aria-hidden="true" class="flex size-11 items-center justify-center rounded-full bg-clay/10 p-2.5 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="40" x2="8" y2="10"/><line x1="8" y1="40" x2="42" y2="40"/><polyline points="10,36 18,28 26,30 36,18 42,12"/><circle cx="10" cy="36" r="1.8" fill="currentColor" stroke="none"/><circle cx="18" cy="28" r="1.8" fill="currentColor" stroke="none"/><circle cx="26" cy="30" r="1.8" fill="currentColor" stroke="none"/><circle cx="36" cy="18" r="1.8" fill="currentColor" stroke="none"/><circle cx="42" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg></span>
-                            <span class="font-playfair text-[1.35rem] text-ink">Social Media</span>
-                            <span class="mt-auto flex items-baseline justify-between gap-3">
-                                <span class="font-cormorant text-[1.1rem] italic text-clay">Ask for pricing</span>
                                 <span aria-hidden="true" class="font-playfair text-clay transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                             </span>
                         </a>
@@ -352,7 +419,6 @@
                 <li><a href="/online-stores" class="footer-link">Online Stores</a></li>
                 <li><a href="/care-plans" class="footer-link">Care Plans</a></li>
                 <li><a href="/add-ons" class="footer-link">Add-Ons</a></li>
-                <li><a href="/social-media" class="footer-link">Social Media</a></li>
             </ul>
         </nav>
 
