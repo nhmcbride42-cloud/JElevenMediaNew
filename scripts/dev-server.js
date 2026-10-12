@@ -60,6 +60,8 @@ const csrfApp = require(path.join(root, 'api/csrf-token.js'));
 const contactApp = require(path.join(root, 'api/contact.js'));
 app.all('/api/csrf-token', (req, res) => csrfApp(req, res));
 app.all('/api/contact', (req, res) => contactApp(req, res));
+const questionnaireApp = require(path.join(root, 'api/questionnaire.js'));
+app.all('/api/questionnaire', (req, res) => questionnaireApp(req, res));
 
 // Vercel Analytics script only exists on Vercel.
 app.get('/_vercel/*', (req, res) => res.type('js').send(''));

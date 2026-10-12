@@ -1,6 +1,7 @@
-// Contact page form (/contact). Shows one step at a time when JavaScript is
-// on (without it, every step shows at once and the form still submits).
-// Posts to /api/contact, which needs a CSRF token fetched first.
+// Contact page form (/contact) and the client questionnaire (/questionnaire).
+// A form posts to its data-endpoint (default /api/contact) after fetching a
+// CSRF token. Forms with several [data-step] blocks show one step at a time
+// when JavaScript is on; without it, every step shows and the form still works.
 (function () {
   document.documentElement.classList.add('js');
 
@@ -160,7 +161,7 @@
     submitBtn.textContent = 'Sending...';
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(form.dataset.endpoint || '/api/contact', {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': csrfInput.value },

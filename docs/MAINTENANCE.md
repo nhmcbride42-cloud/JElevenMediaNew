@@ -107,6 +107,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 ├── care-plans.html             Hosting + maintenance care plans
 ├── add-ons.html                Google Business Profile, extra pages/products, integrations
 ├── contact.html                Contact page (three-step project form)
+├── questionnaire.html          New-client questionnaire (unlisted; send the link)
 ├── 404.html                    "Page not found"
 ├── partials/
 │   ├── nav.html                Navigation (source of truth)
@@ -143,6 +144,7 @@ If `git pull` complains about `dist/output.css`, run `git checkout -- dist/outpu
 | `/care-plans` | `care-plans.html` | ✓ |
 | `/add-ons` | `add-ons.html` | ✓ |
 | `/contact` | `contact.html` | ✓ |
+| `/questionnaire` | `questionnaire.html` | — (unlisted, noindex) |
 | any unknown URL | `404.html` | — |
 
 **Redirects from the old site** (`vercel.json` → `redirects`) keep old links and search results working:
@@ -353,6 +355,16 @@ Protections (same as the Rogue K9 site):
 **Add a field:** add the input (with a `name`) and a `<p data-error="fieldname" class="form-error hidden" role="alert"></p>` to the right step; add it to `ContactSchema` in `api/contact.js` (and `LABELS` if it has fixed options); add a row to `rows` in the same file. `js/contact.js` needs no changes.
 
 **Email:** `lib/contact-email.js` is a plain layout: one row per answer under three headings, then their message. It uses tables and inline styles on purpose; email apps ignore modern CSS. Subject: "New project inquiry from (name)". From = `CONTACT_FROM_EMAIL`, To = `CONTACT_TO_EMAIL`, Reply-To = the visitor, so pressing Reply answers them directly. The From address must be on a domain verified in Resend (Resend → Domains); until then use `onboarding@resend.dev`, which only delivers to the Resend account owner's own email.
+
+---
+
+### Client questionnaire (`/questionnaire`)
+
+An unlisted page to send to clients once they've chosen J Eleven Media: their business, goals, look and feel, pages and features, and logistics. It isn't in the nav, footer or sitemap and carries `noindex`, so only people with the link find it.
+
+**Files:** `questionnaire.html` (the form, one page, five numbered sections), `api/questionnaire.js` (server), plus the shared `js/contact.js` (the form's `data-endpoint="/api/questionnaire"` tells it where to post) and `lib/contact-email.js`.
+
+Answers are emailed to `CONTACT_TO_EMAIL` with the subject "Website questionnaire: (business) (name)"; Reply-To is the client. Only name, email, business name and "What does your business do?" are required. Changing or adding options works the same as the contact form: update `questionnaire.html`, then `LABELS` (and `QuestionnaireSchema` for new fields) in `api/questionnaire.js`.
 
 ---
 
