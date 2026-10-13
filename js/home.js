@@ -50,8 +50,8 @@ document.querySelectorAll('[data-reveal-group]').forEach((group) => {
 });
 
 // ── Service tabs ──
-// One panel shows at a time. Arrow keys move between tabs (WAI-ARIA tabs
-// pattern). Without JavaScript every panel shows, one after another.
+// One panel shows at a time (on phones, at most one). Arrow keys move between
+// tabs (WAI-ARIA tabs pattern). Without JavaScript every panel shows.
 document.querySelectorAll('[data-tabs]').forEach((wrap) => {
   const tabs = Array.from(wrap.querySelectorAll('[role="tab"]'));
   const panels = tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
@@ -65,8 +65,22 @@ document.querySelectorAll('[data-tabs]').forEach((wrap) => {
     if (focus) tabs[i].focus();
   };
 
+  // On phones the tabs work as an accordion (see index.html): tapping the
+  // open row closes it. Wider screens always keep one tab open.
+  const phone = window.matchMedia('(max-width: 47.999rem)');
+  const closeAll = () => tabs.forEach((t, n) => {
+    t.setAttribute('aria-selected', 'false');
+    panels[n].hidden = true;
+  });
+  phone.addEventListener('change', () => {
+    if (!phone.matches && !tabs.some((t) => t.getAttribute('aria-selected') === 'true')) select(0, false);
+  });
+
   tabs.forEach((t, i) => {
-    t.addEventListener('click', () => select(i, false));
+    t.addEventListener('click', () => {
+      if (phone.matches && t.getAttribute('aria-selected') === 'true') closeAll();
+      else select(i, false);
+    });
     t.addEventListener('keydown', (e) => {
       const keys = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
       if (e.key in keys) {

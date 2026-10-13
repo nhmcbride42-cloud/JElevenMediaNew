@@ -206,40 +206,46 @@
                 <h2 id="services-heading" class="section-title font-cormorant text-cocoa">Our Services</h2>
             </div>
 
-            <div data-tabs class="grid flex-1 grid-cols-1 content-center gap-6 xl:grid-cols-[minmax(250px,300px)_1fr] xl:items-center xl:gap-12 xl:pb-[3vh]">
-                <div role="tablist" aria-label="Services" aria-orientation="vertical" class="flex gap-1 overflow-x-auto pb-1 md:grid md:grid-cols-4 md:gap-2 md:overflow-visible xl:flex xl:flex-col xl:gap-0 xl:pb-0">
-                    <button type="button" role="tab" id="tab-web" aria-controls="panel-web" aria-selected="true" tabindex="0" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6">
-                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="40" height="30" rx="2"/><line x1="4" y1="17" x2="44" y2="17"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="24" x2="36" y2="24"/><line x1="12" y1="29" x2="30" y2="29"/><line x1="12" y1="34" x2="24" y2="34"/></svg></span>
+            <!-- Phones: an accordion. The tablist and panel wrappers become display:contents and each
+                 tab/panel gets an `order`, so every panel sits right under its own row. -->
+            <div data-tabs class="grid flex-1 grid-cols-1 content-center gap-0 overflow-hidden rounded-[24px] bg-paper/60 md:gap-6 md:overflow-visible md:rounded-none md:bg-transparent xl:grid-cols-[minmax(250px,300px)_1fr] xl:items-center xl:gap-12 xl:pb-[3vh]">
+                <div role="tablist" aria-label="Services" aria-orientation="vertical" class="max-md:contents flex gap-1 overflow-x-auto pb-1 md:grid md:grid-cols-4 md:gap-2 md:overflow-visible xl:flex xl:flex-col xl:gap-0 xl:pb-0">
+                    <button type="button" role="tab" id="tab-web" aria-controls="panel-web" aria-selected="true" tabindex="0" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6 max-md:order-1 max-md:w-full max-md:border-b-0 max-md:border-t max-md:px-5 max-md:py-4 max-md:opacity-100 max-md:aria-selected:border-line max-md:border-t-0">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg class="size-full" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="40" height="30" rx="2"/><line x1="4" y1="17" x2="44" y2="17"/><circle cx="9.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.4" fill="currentColor" stroke="none"/><line x1="12" y1="24" x2="36" y2="24"/><line x1="12" y1="29" x2="30" y2="29"/><line x1="12" y1="34" x2="24" y2="34"/></svg></span>
                         <span class="flex flex-col">
                             <span class="font-playfair text-[1.2rem] leading-none text-ink xl:text-[1.45rem]">Web Design</span>
-                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay xl:block">From $500</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay max-md:block xl:block">From $500</span>
                         </span>
+                        <span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:inline max-md:group-aria-selected:hidden">+</span><span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:group-aria-selected:inline">&minus;</span>
                     </button>
-                    <button type="button" role="tab" id="tab-stores" aria-controls="panel-stores" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6">
-                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16 H38 L36 42 H12 Z"/><path d="M18 20 V13 A6 6 0 0 1 30 13 V20"/><circle cx="18" cy="20" r="1.2" fill="currentColor" stroke="none"/><circle cx="30" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+                    <button type="button" role="tab" id="tab-stores" aria-controls="panel-stores" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6 max-md:order-3 max-md:w-full max-md:border-b-0 max-md:border-t max-md:px-5 max-md:py-4 max-md:opacity-100 max-md:aria-selected:border-line">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg class="size-full" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16 H38 L36 42 H12 Z"/><path d="M18 20 V13 A6 6 0 0 1 30 13 V20"/><circle cx="18" cy="20" r="1.2" fill="currentColor" stroke="none"/><circle cx="30" cy="20" r="1.2" fill="currentColor" stroke="none"/></svg></span>
                         <span class="flex flex-col">
                             <span class="font-playfair text-[1.2rem] leading-none text-ink xl:text-[1.45rem]">Online Stores</span>
-                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay xl:block">From $500</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay max-md:block xl:block">From $500</span>
                         </span>
+                        <span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:inline max-md:group-aria-selected:hidden">+</span><span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:group-aria-selected:inline">&minus;</span>
                     </button>
-                    <button type="button" role="tab" id="tab-care" aria-controls="panel-care" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6">
-                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 24 A14 14 0 1 1 24 10"/><polyline points="24,4 24,10 30,10"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="14" x2="24" y2="21"/><line x1="24" y1="27" x2="24" y2="30"/><line x1="30" y1="24" x2="34" y2="24"/></svg></span>
+                    <button type="button" role="tab" id="tab-care" aria-controls="panel-care" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6 max-md:order-5 max-md:w-full max-md:border-b-0 max-md:border-t max-md:px-5 max-md:py-4 max-md:opacity-100 max-md:aria-selected:border-line">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg class="size-full" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M38 24 A14 14 0 1 1 24 10"/><polyline points="24,4 24,10 30,10"/><circle cx="24" cy="24" r="3"/><line x1="24" y1="14" x2="24" y2="21"/><line x1="24" y1="27" x2="24" y2="30"/><line x1="30" y1="24" x2="34" y2="24"/></svg></span>
                         <span class="flex flex-col">
                             <span class="font-playfair text-[1.2rem] leading-none text-ink xl:text-[1.45rem]">Care Plans</span>
-                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay xl:block">From $50/month</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay max-md:block xl:block">From $50/month</span>
                         </span>
+                        <span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:inline max-md:group-aria-selected:hidden">+</span><span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:group-aria-selected:inline">&minus;</span>
                     </button>
-                    <button type="button" role="tab" id="tab-addons" aria-controls="panel-addons" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6">
-                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><line x1="29.5" y1="29.5" x2="42" y2="42"/><polyline points="13,26 16,21 20,24 26,15"/><polyline points="22,15 26,15 26,19"/></svg></span>
+                    <button type="button" role="tab" id="tab-addons" aria-controls="panel-addons" aria-selected="false" tabindex="-1" class="group flex shrink-0 cursor-pointer items-center gap-4 border-b-2 border-line bg-transparent px-3 py-3 text-left opacity-55 transition-[opacity,border-color] duration-200 hover:opacity-100 aria-selected:border-clay aria-selected:opacity-100 focus-ring xl:border-b-0 xl:border-l-2 xl:py-4 xl:pl-6 max-md:order-7 max-md:w-full max-md:border-b-0 max-md:border-t max-md:px-5 max-md:py-4 max-md:opacity-100 max-md:aria-selected:border-line">
+                        <span aria-hidden="true" class="flex size-10 shrink-0 items-center justify-center rounded-full bg-clay/10 p-2 text-clay"><svg class="size-full" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="13"/><line x1="29.5" y1="29.5" x2="42" y2="42"/><polyline points="13,26 16,21 20,24 26,15"/><polyline points="22,15 26,15 26,19"/></svg></span>
                         <span class="flex flex-col">
                             <span class="font-playfair text-[1.2rem] leading-none text-ink xl:text-[1.45rem]">Add-Ons</span>
-                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay xl:block">Priced per add-on</span>
+                            <span class="mt-1 hidden font-cormorant text-[1.05rem] italic text-clay max-md:block xl:block">Priced per add-on</span>
                         </span>
+                        <span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:inline max-md:group-aria-selected:hidden">+</span><span aria-hidden="true" class="ml-auto hidden font-playfair text-[1.4rem] leading-none text-clay max-md:group-aria-selected:inline">&minus;</span>
                     </button>
                 </div>
-                <div class="flex flex-col gap-6">
-                <div role="tabpanel" id="panel-web" aria-labelledby="tab-web" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
-                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Web Design</h3>
+                <div class="flex flex-col gap-6 max-md:contents">
+                <div role="tabpanel" id="panel-web" aria-labelledby="tab-web" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11 max-md:order-2 max-md:rounded-none max-md:bg-transparent max-md:px-5 max-md:pb-7 max-md:pt-1">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink max-md:hidden">Web Design</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Every site is custom-built from scratch using HTML/CSS/Javascript. No templates or page builders. Just a website built specifically to showcase your brand, optimized for performance and user experience.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
                         <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Custom design</li>
@@ -270,8 +276,8 @@
                     </dl>
                     <a href="/web-design" class="cta-link self-start">See all website packages &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-stores" aria-labelledby="tab-stores" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
-                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Online Stores</h3>
+                <div role="tabpanel" id="panel-stores" aria-labelledby="tab-stores" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11 max-md:order-4 max-md:rounded-none max-md:bg-transparent max-md:px-5 max-md:pb-7 max-md:pt-1">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink max-md:hidden">Online Stores</h3>
                     <p class="max-w-[60ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Sell a handful of items right from your website, or launch a complete storefront.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
                         <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>A design matched to your brand</li>
@@ -299,8 +305,8 @@
                     </dl>
                     <a href="/online-stores" class="cta-link self-start">See all store packages &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-care" aria-labelledby="tab-care" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
-                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Care Plans</h3>
+                <div role="tabpanel" id="panel-care" aria-labelledby="tab-care" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11 max-md:order-6 max-md:rounded-none max-md:bg-transparent max-md:px-5 max-md:pb-7 max-md:pt-1">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink max-md:hidden">Care Plans</h3>
                     <p class="max-w-[60ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Hosting, security, and updates are taken care of so you can focus on your business.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
                         <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Hosting, SSL security, and uptime monitoring</li>
@@ -324,8 +330,8 @@
                     </dl>
                     <a href="/care-plans" class="cta-link self-start">See care plan details &rarr;</a>
                 </div>
-                <div role="tabpanel" id="panel-addons" aria-labelledby="tab-addons" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11">
-                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink">Add-Ons</h3>
+                <div role="tabpanel" id="panel-addons" aria-labelledby="tab-addons" tabindex="0" class="flex flex-col gap-6 rounded-[28px] bg-paper/60 p-6 outline-none md:p-11 max-md:order-8 max-md:rounded-none max-md:bg-transparent max-md:px-5 max-md:pb-7 max-md:pt-1">
+                    <h3 class="font-playfair text-[clamp(2rem,3vw,2.8rem)] font-normal leading-none text-ink max-md:hidden">Add-Ons</h3>
                     <p class="max-w-[58ch] font-playfair text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.7] text-ink-soft">Mix into any website or store package to get exactly what your business needs, without jumping to a bigger package.</p>
                     <ul class="grid list-none grid-cols-1 gap-x-8 gap-y-2.5 sm:grid-cols-2">
                         <li class="flex items-start gap-2.5 font-playfair text-[1rem] leading-[1.45] text-ink"><span aria-hidden="true" class="mt-[0.15rem] shrink-0 text-[0.85rem] font-bold text-clay">&#10003;</span>Show up properly on Google Search and Maps</li>
